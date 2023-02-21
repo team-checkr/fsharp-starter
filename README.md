@@ -1,4 +1,4 @@
-# FsLexYacc-Starter
+# F# Starter
 
 This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment. It also contain an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
 
@@ -17,15 +17,16 @@ F#/FsLexYacc
 * [Interpreter.fs](Interpreter.fs): File for the interpreter
 
 
-## Running on macOS M1
+## Getting started
 
-Building on macOS requires the `dotnet-sdk` package. This can be installed using [brew](https://brew.sh):
+Building this project requires .NET 7.0. Installation
 
-```bash
-brew install dotnet-sdk
-```
+- **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
+- **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
+- **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
 
-## Instructions for F#/FSLexYacc
+
+## Running the code
 
 To run the program do:
 
@@ -33,7 +34,7 @@ To run the program do:
 dotnet run
 ```
 
-### Calculator
+This should display a list of the available commands to run. Among these are the calculator, which is a good starting point.
 
 To run the calculator do:
 
@@ -43,7 +44,7 @@ dotnet run calc "1 + 52 * 23"
 
 ## Interactive UI
 
-The analysis can be explored in the interactive tool. Run the program in `dev/` folder matching you operating system.
+When you get further, the analysis can be explored in the interactive tool. Run the program in `dev/` folder matching you operating system.
 
 ```bash
 # Windows
@@ -60,8 +61,23 @@ With the `--open` flag this should open the tool at `http://localhost:3000/` in 
 
 The tool knows how to compile your program by the instructions in `run.toml`.
 
+### Downloading updates
+
+It is recommended to update the binaries in `dev/` regularly. You do this by running the command below matching your platform, and following the instructions when prompted:
+
+```bash
+# Windows
+./dev/win.exe --self-update
+
+# macOS
+./dev/macos --self-update
+
+# linux
+./dev/linux --self-update
+```
+
 ## Evaluation
 
-Every time you push to git, the program gets evaluated automatically.
+Every time you push to git, the program is ready to be evaluated automatically by your teachers.
 
-The result can be seen at GitLab in the `result` branch.
+The results as they are produced, can be seen (at GitLab) in the `result` branch.
