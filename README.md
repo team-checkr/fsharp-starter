@@ -231,7 +231,7 @@ We reproduce parts of the rules here for your convenience:
 
 ### Task 1: A parser for GCL. 
 
-> ** Relevant files: 
+> **Relevant files:** [Graph.fs](Graph.fs); you may also want to add files for creating a lexer and parser with FsLexYacc.
 
 The goal of this task is to implement a parser for GCL that accepts or rejects programs and builds ASTs for them, thus working like the syntax checker of [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). The parser must take as input a string intended to describe a GCL program and must build an AST for it. In addition, the program must produce compilation results: it should return whether the input is a program accepted by the GCL grammar specified above. You should also implement a ”Pretty Printer” module that prints the AST so you can easily check your solution.
 Hints: Use a parser generator as seen in class. Start with the grammar as given above and adapt it to your parser generator. You may need to specify precedence/associativity of some operators in the parser generator language, or by applying some of the grammar transformations seen in class. Your parser needs to generate abstract syntax, which you will need in task 2.
