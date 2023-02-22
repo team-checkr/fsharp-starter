@@ -196,7 +196,8 @@ The syntax of variables and numbers, and the associativity and precedence of ope
 We reproduce parts of the rules here for your convenience:
 
 - Variables `x` and arrays `A` are strings matching the regular expression `[a-zA-Z][a-zA-Z\d ]*` and cannot be any of the language's keywords (e.g. no variable may be named `if` or `od`).
-- Numbers `n` match the regular expression `\d+`.
+- Numbers `n` match the regular expression `\d+`. 
+- We consider numbers as mathematical, i.e. unbounded, integers. In F#, this means that numbers should have the type `bigint` -  an abbreviation for [BigInteger in C#](https://learn.microsoft.com/en-us/dotnet/api/system.numerics.biginteger?view=net-7.0). 
 - A whitespace matches the regular expression `[\u00A0 \n \r \t]`, with a mandatory whitespace after if, do, and before fi, od. Whitespaces are ignored anywhere else.
 - Precedence and associativity rules:
     * In arithmetic expressions, precedence is highest for `-` (unary minus), then `^`, then `*` and `/`, and lowest for `+` and `-` (binary minus).
