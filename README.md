@@ -253,3 +253,29 @@ That is, the compiler must produce a program graph in the textual graphviz forma
 The additional argument `input` determines whether you have to produce a deterministic or a non-deterministic program graph.
 
 *Hints:* Enrich the parser developed in Task 1 so that it exploits the abstract syntax for GCL programs. Follow [Formal Methods, Chapter 2.2] to construct a program graph for a GCL program. 
+
+
+### Task 3: An Interpreter for GCL
+
+> **Relevant files:** [Interpreter.fs](Interpreter.fs)
+
+
+### Task 4: Program Verification
+
+> **Relevant files:** [ProgramVerification.fs](ProgramVerification.fs)
+
+
+### Task 5: A Sign Analyser for GCL
+
+> **Relevant files:** [SignAnalysis.fs](SignAnalysis.fs)
+
+
+### Task 6: A Security Analyser for GCL
+
+> **Relevant files:** [Security.fs](Security.fs)
+
+
+### Task 7: A Model Checker for GCL
+
+TODO: it seems difficult to make this mandatory.
+
