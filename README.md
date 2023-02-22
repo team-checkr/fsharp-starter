@@ -243,9 +243,8 @@ Hints: Use a parser generator as seen in class. Start with the grammar as given 
 The goal of this task is to implement a compiler that turns GCL programs into Program Graphs (PGs) similar to the results you obtain under “Program Graph” in [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). 
 
 To this end, you need to implement the function
-
 ```
-let analysis (src: string) (input: Input) : Output = // TODO
+let analysis (src: string) (input: Input) : Output = 
 ```
 which takes a string representation of a GCL program and produces a string representation of a program graph in the [DOT language](https://graphviz.org/doc/info/lang.html) - a language for visualizing graphs.
 That is, the compiler must produce a program graph in the textual graphviz format used by the export feature on [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). 
@@ -258,6 +257,22 @@ The additional argument `input` determines whether you have to produce a determi
 ### Task 3: An Interpreter for GCL
 
 > **Relevant files:** [Interpreter.fs](Interpreter.fs)
+
+The goal of this task is to implement an interpreter for GCL programs that works similarly to the environment “Step-wise Execution” on [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). 
+
+To this end, you need to implement the function
+```
+let analysis (src: string) (input: Input) : Output =
+```
+The above functon takes a string representation of a GCL program and a structure input that determines 
+- whether we consider a deterministic program graph or not,
+- the initial memory, and
+- a `trace_size`.
+As an output, the function should produce an execution sequence of length `trace_size` starting in an initial configuration with the provided initial memory. If no execution sequence of that length exists, it should produce an execution sequence that is complete or gets stuck.
+Moreover, the output should indicate whether the execution sequence is complete, stuck or still running, i.e. it can still be extended.
+The types for producing such an output are provided in [Interpreter.fs](Interpreter.fs).
+
+*Hints:* Follow [Formal Methods, Chapter 1.2] and [Formal Methods, Chapter 2.3] to build an interpreter based on the semantics of GCL programs and their program graphs.
 
 
 ### Task 4: Program Verification
@@ -277,5 +292,5 @@ The additional argument `input` determines whether you have to produce a determi
 
 ### Task 7: A Model Checker for GCL
 
-TODO: it seems difficult to make this mandatory.
+TODO: it seems difficult to make this mandatory. Perhaps change the task such that it can be completed in class?
 
