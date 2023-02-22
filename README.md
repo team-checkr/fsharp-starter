@@ -19,16 +19,19 @@ F#/FsLexYacc
 
 ## Getting started
 
-Building this project requires .NET 7.0. Installation
+Building this project requires .NET 7.0. For installation, follow the description matching your platform:
 
 - **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
 - **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
 - **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
 
+To check that you have an up-to-date version run `dotnet --version` to display the version number, which should be something starting with 7. If it does not, consider updating your installation, and if that doesn't work, try uninstalling your current version and installing from scratch.
+
+Next step is getting the code, which is done by cloning this repository and using `cd` to change directory to the newly cloned folder. To do this, make sure that you have your SSH keys setup correctly (instructions for [GitLab](https://docs.gitlab.com/ee/user/ssh.html)).
 
 ## Running the code
 
-To run the program do:
+To run the program, navigate to the directory of you cloned repository and do:
 
 ```bash
 dotnet run
@@ -78,6 +81,6 @@ It is recommended to update the binaries in `dev/` regularly. You do this by run
 
 ## Evaluation
 
-Every time you push to git, the program is ready to be evaluated automatically by your teachers.
+Every time you push your Git repository, your code is ready to be evaluated automatically by your teachers.
 
-The results as they are produced, can be seen (at GitLab) in the `result` branch.
+When your project has been evaluated, the results can be seen (at GitLab) in the `result` branch.
