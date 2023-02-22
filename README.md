@@ -23,7 +23,7 @@ Most components of the mandatory assignment can be seen as a basic version of [h
 The assignment is divided into seven tasks, where each tasks corresponds to a module of your tool.
 The overall structure of the assignment is illustrated below, where green boxes are inputs and outputs of your tool; blue boxes represent components that you have to implement.
 
-![Structure of the Assignment]()
+![Structure of the Assignment](overview.png)
 
 We briefly describe the aims of each task:
 
