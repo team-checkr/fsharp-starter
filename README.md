@@ -127,11 +127,10 @@ let analysis (src: string) (input: Input) : Output =
 ```
 
 
-### Getting started
+### Installation
 
 Building this project requires .NET 7.0.
 
-Installation:
 - **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
 - **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
 - **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
