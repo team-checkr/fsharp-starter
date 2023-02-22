@@ -1,6 +1,6 @@
 # F# Starter
 
-This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment. It also contain an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
+This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment. It also contains an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
 
 ## Files
 
@@ -9,7 +9,7 @@ F#/FsLexYacc
 * [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
 * [Types.fs](Types.fs): Global types that are used in many analysis
 * [AST.fs](AST.fs): Types for AST of arithmetic expressions
-* [Program.fs](Program.fs): The entrypoint for the program
+* [Program.fs](Program.fs): The entry point for the program
 * [Security.fs](Security.fs): File for the security analysis
 * [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis
 * [ProgramVerification.fs](ProgramVerification.fs): File for program verification
@@ -27,11 +27,11 @@ Building this project requires .NET 7.0. For installation, follow the descriptio
 
 To check that you have an up-to-date version run `dotnet --version` to display the version number, which should be something starting with 7. If it does not, consider updating your installation, and if that doesn't work, try uninstalling your current version and installing from scratch.
 
-Next step is getting the code, which is done by cloning this repository and using `cd` to change directory to the newly cloned folder. To do this, make sure that you have your SSH keys setup correctly (instructions for [GitLab](https://docs.gitlab.com/ee/user/ssh.html)).
+The next step is getting the code, which is done by cloning this repository and using `cd` to change directory to the newly cloned folder. To do this, make sure that you have your SSH keys set up correctly (instructions for [GitLab](https://docs.gitlab.com/ee/user/ssh.html)).
 
 ## Running the code
 
-To run the program, navigate to the directory of you cloned repository and do:
+To run the program, navigate to the directory of your cloned repository and do:
 
 ```bash
 dotnet run
@@ -47,7 +47,7 @@ dotnet run calc "1 + 52 * 23"
 
 ## Interactive UI
 
-When you get further, the analysis can be explored in the interactive tool. Run the program in `dev/` folder matching you operating system.
+When you get further, the analysis can be explored in the interactive tool. Run the program in the `dev/` folder matching your operating system.
 
 ```bash
 # Windows
