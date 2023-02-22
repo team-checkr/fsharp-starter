@@ -40,17 +40,20 @@ We briefly describe the aims of each task:
 
 ### Rules
 
-- You should work on the project in groups of size 2 - 3.
-- You need to use your group's git repository (which also contains this document) to work on the mandatory assignments. All solutions need to be handed in by comitting *and pushing* them to your group's git repository.
+- You should work on the project in groups of size 2 - 3. 
+- You have to use your group's git repository (which also contains this document) to work on the mandatory assignments. All solutions must be handed in by comitting *and pushing* them to your group's git repository.
     * If you have not used git before, you can find [tutorials online](https://git-scm.com/docs/gittutorial).
-- You can push to your group's repository as often as you want. We will consider the last push before the individual task's [deadline]() as your submission.
+- You can push to your group's repository as often as you want. We will consider the last push before each task's [deadline]() as your submission.
 - You can continue working on the module of a task after the deadline. However, such updates will not be evaluated.
 - You have to implement your solutions within the code framework provided in this repository. 
 - Your solution must be implemented in F#.
 - You have to implement the techniques presented in the teaching material.
-- You are **not** allowed to change any code in the existing code framework unless there is a comment that explicitly allows you to change code.
-- You are allowed to add code in the marked areas of the code framework.
-- You are allowed to add files but do not forget to add them to your git repository.
+- You are allowed to add more files but do not forget to add them to your git repository.
+- ***Do not modify or add any code in the existing files unless it is explicitly allowed by a comment of the form***
+```
+// TODO: replace this by your implementation
+```
+
 
 ### Deadlines
 
@@ -64,22 +67,24 @@ We briefly describe the aims of each task:
 - Task 6:
 - Task 7:
 
-### Feedback and Evaluation
+### Feedback
 
 We will *not* publish solutions of any mandatory assignment tasks.
 Instead, the code framework comes with an evaluation tool that automatically gives you feedback on your solutions, whenever you push your solutions to this repository. 
 Furthermore, we encourage you to practively seek feedback from the TAs and the teacher in class during lab days.
 
+### Evaluation
+
 We want to encourage you to design, implement, test, and analyze your code carefully. 
-Hence, your final submissions will be checked by a more powerful version of the evaluation tool available to you.
-In other words: even if the evaluation tool available to you does not detect any errors, the final evaluation might still be able to spot some.
+Hence, your final submissions will be checked by a more powerful version of the evaluation tool.
+In other words: even if the evaluation tool does not detect any errors after pushing your solutions, the final evaluation might still be able to spot some errors.
 
 The assignment is *mandatory*: you need to hand-in a *reasonable* solution for each task in order to be admitted to the final exam.
 
 By *reasonable*, we mean that your solution does not always have to work perfectly, but your solution should demonstrate that you can faithfully implement the techniques covered in class.
-As a general guideline, if the evaluation tool available to you does not report any errors and there is no obvious cheating (e.g. hard-coding certain examples), you can safely assume that your solution is reasonable.
+As a general guideline, if you push your solution and the evaluation tool does not report any errors and there is no obvious cheating (e.g. hard-coding certain examples), you can safely assume that your solution is reasonable.
 
-### Assignment Competition
+### Student competition
 
 After every deadline, we will publish a overview of the solutions of all groups such that you can compare the quality of your solution against those of your classmates. The solutions will be ranked according to the number of detected errors and their efficiency.
 
@@ -94,18 +99,32 @@ This repository contains the skeleton of a parser along with the input and outpu
 
 ### Files
 
-> You may add files and change code in designated parts of the following files. **Do not modify any other code or file.**
+The existing code framework contains an example project that implements a parser for arithmetic expressions together with a small calculator.
+You can have a look at the calculator's implementation in the following files:
 
 * [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions
 * [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
-* [Types.fs](Types.fs): Global types that are used in many analysis tasks
 * [AST.fs](AST.fs): Types for the AST of arithmetic expressions
-* [Program.fs](Program.fs): The entrypoint for the program.
-* [Graph.fs](Graph.fs): File for program graphs
+
+The entrypoint for your tool as a whole is [Program.fs](Program.fs). It contains the main function that invokes the calculator as well as your solutions to future tasks. **Your are not allowed to change the main function**.
+Moreover, the file [Types.fs](Types.fs) contains global types that are used in many analysis tasks.
+
+For tasks 1 - 6, the framework contains dedicated files and functions that you should implement:
+* [Graph.fs](Graph.fs): File for tasks 1 and 2: parse and compile GCL programs to program graphs
 * [Interpreter.fs](Interpreter.fs): File for task 3: interpreter
 * [ProgramVerification.fs](ProgramVerification.fs): File for task 4: program verification
 * [SignAnalysis.fs](SignAnalysis.fs): File for task 5: sign analysis
 * [Security.fs](Security.fs): File for task 6: security analysis
+
+The above files typically contain a few definitions that you are **not** allowed to change. You should only add code after the comment `// TODO: replace this by your implementation`. For example, in the file `Graph.fs` below, you should replace `failwith "Graph analysis not yet implemented` with your solution.
+Feel free to add additional functions, files, etc.
+
+```
+// ...
+
+let analysis (src: string) (input: Input) : Output =
+    failwith "Graph analysis not yet implemented" // TODO: replace this by your implementation
+
 
 ### Getting started
 
