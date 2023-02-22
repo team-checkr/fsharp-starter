@@ -242,7 +242,7 @@ Hints: Use a parser generator as seen in class. Start with the grammar as given 
 
 The goal of this task is to implement a compiler that turns GCL programs into Program Graphs (PGs) similar to the results you obtain under “Program Graph” in [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). 
 
-To this end, you need to implement the function
+To this end, implement the function
 ```
 let analysis (src: string) (input: Input) : Output = 
 ```
@@ -260,7 +260,7 @@ The additional argument `input` determines whether you have to produce a determi
 
 The goal of this task is to implement an interpreter for GCL programs that works similarly to the environment “Step-wise Execution” on [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). 
 
-To this end, you need to implement the function
+To this end, implement the function
 ```
 let analysis (src: string) (input: Input) : Output =
 ```
@@ -279,11 +279,48 @@ The types for producing such an output are provided in [Interpreter.fs](Interpre
 
 > **Relevant files:** [ProgramVerification.fs](ProgramVerification.fs)
 
+Implement a tool that computes the weakest precondition of a given GCL program and a postcondition.
+To this end, implement the function
+```
+let analysis (src: string) (input: Input) : Output =
+```
+which takes two strings - a GCL program and a postcondition `F` - as an input and produces the weakest precondition of that program and that postcondition as an output.
+
+For this task, it is fine to consider a reduced fragment of our langauge that is given by the following grammar:
+```
+C  ::=  x := a  |  skip  |  C ; C  |  if GC fi
+GC ::=  b -> C  |  GC [] GC
+a  ::=  n  |  x  |  a + a  |  a - a  |  a * a  |  - a  |  (a)
+b  ::=  true  |  false  |  b & b  |  b | b  |  b && b  |  b || b  |  ! b
+     |  a = a  |  a != a  |  a > a  |  a >= a  |  a < a  |  a <= a  |  (b)
+F  ::=  b 
+```
+That is, you do not have to consider loops and expressions that can crash. 
+Moreover, formulas `F` are identical to Boolean expressions `b`.
+
+If you have some time left, you can work on the following extensions:
+
+- Extend your verifier such that it supports the command `do [inv F] GC od`, that is, enable verification of loops with user-supplied invariant formulas `F`.
+- Extend your verifier such that it supports the division operation `a / a` in arithmetic expressions.
+
+*Hints:* Follow the approach in the supplementary material on program verification.
 
 ### Task 5: A Sign Analyser for GCL
 
 > **Relevant files:** [SignAnalysis.fs](SignAnalysis.fs)
 
+The goal of this task is to implement a tool for sign analysis of GCL programs that works like the one available under environment “Detection of Signs Analysis” on [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). The sign analysis must follow the approach in [Formal Methods, Chapter 4].
+
+To this end, implement the function
+```
+let analysis (src: string) (input: Input) : Output =
+```
+The above functon takes a string representation of a GCL program and a structure input that determines 
+- whether we consider a deterministic program graph or not and
+- the initial sign assignment.
+It should return the initial node, the final node, and the reszkt of a sign analysis for the variables.
+
+*Hints:* Enrich the parser as you did in Task 3 and follow [Formal Methods, Chapter 4] for implementing the sign analysis.
 
 ### Task 6: A Security Analyser for GCL
 
