@@ -51,7 +51,7 @@ We briefly describe the aims of each task:
 - You are allowed to add more files but do not forget to add them to your git repository.
 - ***Do not modify or add any code in the existing files unless it is explicitly allowed by a comment of the form***
 ```
-// TODO: replace this by your implementation
+TODO: start here
 ```
 
 
@@ -116,14 +116,14 @@ For tasks 1 - 6, the framework contains dedicated files and functions that you s
 * [SignAnalysis.fs](SignAnalysis.fs): File for task 5: sign analysis
 * [Security.fs](Security.fs): File for task 6: security analysis
 
-The above files typically contain a few definitions that you are **not** allowed to change. You should only add code after the comment `// TODO: replace this by your implementation`. For example, in the file `Graph.fs` below, you should replace `failwith "Graph analysis not yet implemented` with your solution.
+The above files typically contain a few definitions that you are **not** allowed to change. You should only add or modify code in or after lines marked with `// TODO: start here`. For example, in the snippet of `Graph.fs` below, you should replace `failwith "Graph analysis not yet implemented` with your solution.
 Feel free to add additional functions, files, etc.
 
 ```
 // ...
 
 let analysis (src: string) (input: Input) : Output =
-    failwith "Graph analysis not yet implemented" // TODO: replace this by your implementation
+    failwith "Graph analysis not yet implemented" // TODO: start here
 
 
 ### Getting started
