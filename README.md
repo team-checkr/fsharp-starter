@@ -59,13 +59,13 @@ We briefly describe the aims of each task:
 
 **For each task, you have to hand in your solution by comitting and *pushing* them into your group's repository before the task's deadline listed below.**
  
-- Task 1: 
-- Task 2:
-- Task 3:
-- Task 4:
-- Task 5:
-- Task 6:
-- Task 7:
+- Task 1: March 9, 23:59
+- Task 2: March 16, 23:59
+- Task 3: March 27, 23:59
+- Task 4: April 13, 23:59
+- Task 5: April 24, 23:59
+- Task 6: May 8, 23:59
+- Task 7: ???
 
 ### Feedback
 
