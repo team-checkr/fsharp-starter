@@ -315,7 +315,7 @@ To this end, implement the function
 ```
 let analysis (src: string) (input: Input) : Output =
 ```
-The above functon takes a string representation of a GCL program and a structure input that determines 
+The above functon takes a string representation of a GCL program and a structure `input` that determines 
 - whether we consider a deterministic program graph or not and
 - the initial sign assignment.
 It should return the initial node, the final node, and the reszkt of a sign analysis for the variables.
@@ -325,6 +325,18 @@ It should return the initial node, the final node, and the reszkt of a sign anal
 ### Task 6: A Security Analyser for GCL
 
 > **Relevant files:** [Security.fs](Security.fs)
+
+The goal of this task is to implement a tool for security analysis of GCL programs, that works as a simplified version of the environment “Security Analysis” on [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). The security analysis must follow the approach in [Formal methods, Chapter 5.3-5.4]. 
+
+To this end, implement the function
+```
+let analysis (src: string) (input: Input) : Output =
+```
+which takes a GCL program as well as a security lattice and a security classification for variables.
+It should produce the actual and allowed information flows as well as all violations.
+
+*Hints:* Enrich the parser as you did in Task 3 and follow [Formal Methods, Chapter 5.4] for implementing security analysis. Base your analysis on deterministic program graphs.
+
 
 
 ### Task 7: A Model Checker for GCL
