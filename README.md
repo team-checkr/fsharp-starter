@@ -124,6 +124,7 @@ Feel free to add additional functions, files, etc.
 
 let analysis (src: string) (input: Input) : Output =
     failwith "Graph analysis not yet implemented" // TODO: start here
+```
 
 
 ### Getting started
