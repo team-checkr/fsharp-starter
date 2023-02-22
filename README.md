@@ -70,7 +70,7 @@ We briefly describe the aims of each task:
 ### Feedback
 
 We will *not* publish solutions of any mandatory assignment tasks.
-Instead, the code framework comes with an evaluation tool that automatically gives you feedback on your solutions, whenever you push your solutions to this repository. 
+Instead, the code framework comes with an evaluation tool that automatically gives you feedback on your solutions for tasks 2 - 6, whenever you push your solutions to this repository. 
 Furthermore, we encourage you to practively seek feedback from the TAs and the teacher in class during lab days.
 
 ### Evaluation
