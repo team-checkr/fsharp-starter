@@ -51,7 +51,7 @@ We briefly describe the aims of each task:
 - You are allowed to add more files but do not forget to add them to your git repository.
 - ***Do not modify or add any code in the existing files unless it is explicitly allowed by a comment of the form***
 ```
-TODO: start here
+// TODO: start here
 ```
 
 
