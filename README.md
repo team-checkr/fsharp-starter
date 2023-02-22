@@ -7,11 +7,11 @@ Everything you need to work on the mandatory assignment is found in this git rep
 This document is structured as follows:
 
 1. Goals of the mandatory assignment
-2. Deadlines
-3. Guidelines
-4. Definition of Yet Another GCL Language
-5. Task descriptions
-6. Getting started with the code framework
+3. Guidelines and Deadlines
+4. Getting started with the code framework
+5. Definition of Yet Another GCL Language
+6. Task descriptions
+
 
 ## Goals of the mandatory assignment
 
@@ -36,20 +36,7 @@ We briefly describe the aims of each task:
     - In task 6, you will implement another program analysis that checks whether your program leaks confidential information.
     - In task 7, you will implement a small model checker to analyse more advanced properties.
 
-
-## Deadlines
-
-**For each task, you have to hand in your solution by comitting and *pushing* them into your group's repository before the task's deadline listed below.**
- 
-- Task 1: 
-- Task 2:
-- Task 3:
-- Task 4:
-- Task 5:
-- Task 6:
-- Task 7:
-
-## Guidelines for working on the mandatory assignment
+## Guidelines and Deadlines
 
 ### Rules
 
@@ -65,6 +52,17 @@ We briefly describe the aims of each task:
 - You are allowed to add code in the marked areas of the code framework.
 - You are allowed to add files but do not forget to add them to your git repository.
 
+### Deadlines
+
+**For each task, you have to hand in your solution by comitting and *pushing* them into your group's repository before the task's deadline listed below.**
+ 
+- Task 1: 
+- Task 2:
+- Task 3:
+- Task 4:
+- Task 5:
+- Task 6:
+- Task 7:
 
 ### Feedback and Evaluation
 
@@ -87,6 +85,98 @@ After every deadline, we will publish a overview of the solutions of all groups 
 
 The group names will be anonymised, i.e. you will only be able to identify the position of your own group in the ranking.
 The code to identify your own group is found in this repository [TODO: link to your code]().
+
+Your placement in the ranking does *not* affect your final grade. You should rather see it as a motivation to produce high-quality code.
+
+## Getting started with the code framework
+
+This repository contains the skeleton of a parser along with the input and output types for each task in the assignment. It also contains an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
+
+### Files
+
+> You may add files and change code in designated parts of the following files. **Do not modify any other code or file.**
+
+* [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions
+* [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
+* [Types.fs](Types.fs): Global types that are used in many analysis tasks
+* [AST.fs](AST.fs): Types for the AST of arithmetic expressions
+* [Program.fs](Program.fs): The entrypoint for the program.
+* [Graph.fs](Graph.fs): File for program graphs
+* [Interpreter.fs](Interpreter.fs): File for task 3: interpreter
+* [ProgramVerification.fs](ProgramVerification.fs): File for task 4: program verification
+* [SignAnalysis.fs](SignAnalysis.fs): File for task 5: sign analysis
+* [Security.fs](Security.fs): File for task 6: security analysis
+
+### Getting started
+
+Building this project requires .NET 7.0.
+
+Installation:
+- **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
+- **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
+- **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
+
+
+### Running the code
+
+To run the program execute the following in the root directory of this repository:
+
+```bash
+dotnet run
+```
+
+This should display a list of the available commands that you can run. Among these are the calculator, which is a good starting point.
+
+For example, you can run the calculator as follows:
+
+```bash
+dotnet run calc "1 + 52 * 23"
+```
+
+### Interactive user interface
+
+When you get further, you can use your tool in a graphical user interface. 
+To this end, run the following from the root folder of this repository depending on your operating system:
+
+```bash
+# Windows
+./dev/win.exe --open
+
+# macOS
+./dev/macos --open
+
+# linux
+./dev/linux --open
+```
+
+This should open the user interface in your browser (at `http://localhost:3000/`).
+
+The tool knows how to compile your program by the instructions in `run.toml`. 
+Typically, there should be no need to modify this file.
+
+#### Downloading updates
+
+It is recommended to update the binaries in `dev/` regularly. You can do this by running the command below matching your platform, and following the instructions when prompted:
+
+```bash
+# Windows
+./dev/win.exe --self-update
+
+# macOS
+./dev/macos --self-update
+
+# linux
+./dev/linux --self-update
+```
+
+### Evaluation
+
+We recommend reguarly pushing your work to this repository; your last push before the deadline will count as your submission.
+
+Every time you push your solutions to this repository, the evaluation tool will analyze it and produce feedback for you.
+You can inspect the generated feedback on the GitLab page of your reposiroty in the `result` branch.
+
+![TODO: add screenshot]()
 
 ## Yet Another GCL Variant
 
@@ -115,90 +205,3 @@ We reproduce parts of the rules here for your convenience:
     * Operators `^`, `[]`, and `;` are right associative.
 
 **In the rest of the document GCL refers to the above language.**
-
-
-
-
-## F# Starter
-
-This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment. It also contain an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
-
-### Files
-
-F#/FsLexYacc
-* [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions
-* [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
-* [Types.fs](Types.fs): Global types that are used in many analysis
-* [AST.fs](AST.fs): Types for AST of arithmetic expressions
-* [Program.fs](Program.fs): The entrypoint for the program
-* [Security.fs](Security.fs): File for the security analysis
-* [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis
-* [ProgramVerification.fs](ProgramVerification.fs): File for program verification
-* [Graph.fs](Graph.fs): File for graphs
-* [Interpreter.fs](Interpreter.fs): File for the interpreter
-
-
-### Getting started
-
-Building this project requires .NET 7.0. Installation
-
-- **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
-- **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
-- **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
-
-
-### Running the code
-
-To run the program do:
-
-```bash
-dotnet run
-```
-
-This should display a list of the available commands to run. Among these are the calculator, which is a good starting point.
-
-To run the calculator do:
-
-```bash
-dotnet run calc "1 + 52 * 23"
-```
-
-### Interactive UI
-
-When you get further, the analysis can be explored in the interactive tool. Run the program in `dev/` folder matching you operating system.
-
-```bash
-# Windows
-./dev/win.exe --open
-
-# macOS
-./dev/macos --open
-
-# linux
-./dev/linux --open
-```
-
-With the `--open` flag this should open the tool at `http://localhost:3000/` in your browser.
-
-The tool knows how to compile your program by the instructions in `run.toml`.
-
-#### Downloading updates
-
-It is recommended to update the binaries in `dev/` regularly. You do this by running the command below matching your platform, and following the instructions when prompted:
-
-```bash
-# Windows
-./dev/win.exe --self-update
-
-# macOS
-./dev/macos --self-update
-
-# linux
-./dev/linux --self-update
-```
-
-### Evaluation
-
-Every time you push to git, the program is ready to be evaluated automatically by your teachers.
-
-The results as they are produced, can be seen (at GitLab) in the `result` branch.
