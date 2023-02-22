@@ -6,11 +6,11 @@ All material you need to work on the mandatory assignment is found in this git r
 
 This document is structured as follows:
 
-1. Goals of the mandatory assignment
-3. Guidelines and Deadlines
-4. Getting started with the code framework
-5. Definition of Yet Another GCL Language
-6. Task descriptions
+1. [Goals of the mandatory assignment](#goals-of-the-mandatory-assignment)
+3. [Guidelines and Deadlines](#guidelines-and-deadlines)
+4. [Getting started with the code framework](#getting-started-with-the-code-framework)
+5. [Definition of Yet Another GCL Language](#yet-another-gcl-variant)
+6. [Task descriptions](#tasks)
 
 
 ## Goals of the mandatory assignment
