@@ -231,10 +231,10 @@ We reproduce parts of the rules here for your convenience:
 
 ### Task 1: A parser for GCL
 
-> **Relevant files:** [Graph.fs](Graph.fs); you may also want to add files for creating a lexer and parser with FsLexYacc.
+> **Relevant files:** [Graph.fs](Graph.fs); [Lexer.fsl] ; [Parser.fsy].
 
 The goal of this task is to implement a parser for GCL that accepts or rejects programs and builds ASTs for them, thus working like the syntax checker of [formalmethods.dk/fm4fun](http://www.formalmethods.dk/fm4fun/). The parser must take as input a string intended to describe a GCL program and must build an AST for it. In addition, the program must produce compilation results: it should return whether the input is a program accepted by the GCL grammar specified above. You should also implement a ”Pretty Printer” module that prints the AST so you can easily check your solution.
-Hints: Use a parser generator as seen in class. Start with the grammar as given above and adapt it to your parser generator. You may need to specify precedence/associativity of some operators in the parser generator language, or by applying some of the grammar transformations seen in class. Your parser needs to generate abstract syntax, which you will need in task 2.
+Hints: Use a parser generator as seen in class and get inspired by the calculator example. Start with the grammar as given above and adapt it to your parser generator. You may need to specify precedence/associativity of some operators in the parser generator language, or by applying some of the grammar transformations seen in class. Your parser needs to generate abstract syntax, which you will need in task 2.
 
 ### Task 2: A Compiler for GCL
 
@@ -286,7 +286,7 @@ let analysis (src: string) (input: Input) : Output =
 ```
 which takes two strings - a GCL program and a postcondition `F` - as an input and produces the weakest precondition of that program and that postcondition as an output.
 
-For this task, it is fine to consider a reduced fragment of our langauge that is given by the following grammar:
+For this task, it is fine to consider a reduced fragment of our language that is given by the following grammar:
 ```
 C  ::=  x := a  |  skip  |  C ; C  |  if GC fi
 GC ::=  b -> C  |  GC [] GC
@@ -315,10 +315,11 @@ To this end, implement the function
 ```
 let analysis (src: string) (input: Input) : Output =
 ```
-The above functon takes a string representation of a GCL program and a structure `input` that determines 
+The above function takes a string representation of a GCL program and a structure `input` that determines 
 - whether we consider a deterministic program graph or not and
 - the initial sign assignment.
-It should return the initial node, the final node, and the reszkt of a sign analysis for the variables.
+
+It should return the result of the sign analysis for the variables for each node. 
 
 *Hints:* Enrich the parser as you did in Task 3 and follow [Formal Methods, Chapter 4] for implementing the sign analysis.
 
@@ -341,5 +342,5 @@ It should produce the actual and allowed information flows as well as all violat
 
 ### Task 7: A Model Checker for GCL
 
-TODO: it seems difficult to make this mandatory. Perhaps change the task such that it can be completed in class?
+TBA
 
