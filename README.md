@@ -27,26 +27,26 @@ The overall structure of the assignment is illustrated below, where green boxes 
 
 We briefly describe the aims of each task:
 
-1. In task 1, you will implement a *parser* that takes a program in our new programming language and turns it into an abstract syntax tree (AST) - one of the main data structures used by the other components. To test your implementation, you will also implement a *pretty printer* that traverses the AST and outputs the original program in a nice format.
+1. In task 1, you will implement a *parser* that takes a program in our new programming language and turns it into an abstract syntax tree (AST) - one of the main data structures used by the other components. To test your implementation, you will also implement a *pretty printer* (i.e. a code generator) that traverses the AST and outputs the original program in a nice format.
 2. In task 2, you will implement a *compiler* that takes the AST of a program and constructs its program graph (PG) - another data structure used for running and analyzing programs. To simplify debugging, you will also implement a *printer* that outputs a graphical representation of program graphs.
 3. In task 3, you will implement an *interpreter* that takes a program graph and an initial memory and computes the program's (complete) execution sequences when started on that memory.
 4. In tasks 4 - 7, you will implement tools that help programmers with writing correct programs:
     - In task 4, you will implement a *verifier* that checks whether a program does what it has been specified to do.
     - In task 5, you will implement a *signs analysis* that determines the signs of variables at every point of a program's execution; such information can be used to detect bugs, such as a division by zero, before actually running the program.
     - In task 6, you will implement another program analysis that checks whether your program leaks confidential information.
-    - In task 7, you will implement a small model checker to analyse more advanced properties.
+    - In task 7, you will implement a model checker to analyse more advanced properties.
 
 ## Guidelines and Deadlines
 
 ### Rules
 
 - You should work on the project in groups of size 2 - 3. 
-- You have to use your group's git repository (which also contains this document) to work on the mandatory assignments. All solutions must be handed in by comitting *and pushing* them to your group's git repository.
+- You have to use your group's git repository (which also contains this document) to work on the mandatory assignment. All solutions must be handed in by comitting *and pushing* them to your group's git repository.
     * If you have not used git before, you can find [tutorials online](https://git-scm.com/docs/gittutorial).
 - You can push to your group's repository as often as you want. We will consider the last push before each task's [deadline]() as your submission.
 - You can continue working on the module of a task after the deadline. However, such updates will not be evaluated.
 - You have to implement your solutions within the code framework provided in this repository. 
-- Your solution must be implemented in F#.
+- Your solutions must be implemented in F#.
 - You have to implement the techniques presented in the teaching material.
 - You are allowed to add more files but do not forget to add them to your git repository.
 - ***Do not modify or add any code in the existing files unless it is explicitly allowed by a comment of the form***
@@ -65,14 +65,14 @@ We briefly describe the aims of each task:
 - Task 4: April 13, 23:59
 - Task 5: April 24, 23:59
 - Task 6: May 8, 23:59
-- Task 7: ???
+- Task 7: TBD
 
 ### Feedback
 
 We will *not* publish solutions of any mandatory assignment tasks.
 Instead, the code framework comes with an evaluation tool that automatically gives you feedback on your solutions for tasks 2 - 6, whenever you push your solutions to this repository. 
 
-Furthermore, we encourage you to practively seek feedback from the TAs and the teacher in class during lab days.
+Furthermore, we encourage you to proactively seek feedback from the TAs and the teacher in class during lab days.
 
 ### Evaluation
 
@@ -84,6 +84,8 @@ The assignment is *mandatory*: you need to hand-in a *reasonable* solution for e
 
 By *reasonable*, we mean that your solution does not always have to work perfectly, but your solution should demonstrate that you can faithfully implement the techniques covered in class.
 As a general guideline, if you push your solution and the evaluation tool does not report any errors and there is no obvious cheating (e.g. hard-coding certain examples), you can safely assume that your solution is reasonable.
+
+We may also manually inspect your code. 
 
 ### Student competition
 
@@ -104,7 +106,7 @@ The existing code framework contains an example project that implements a parser
 You can have a look at the calculator's implementation in the following files:
 
 * [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions
-* [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
+* [Parser.fsy](Parser.fsy): The parser for arithmetic expressions
 * [AST.fs](AST.fs): Types for the AST of arithmetic expressions
 
 The entrypoint for your tool as a whole is [Program.fs](Program.fs). It contains the main function that invokes the calculator as well as your solutions to future tasks. **Your are not allowed to change the main function**.
@@ -194,7 +196,7 @@ It is recommended to update the binaries in `dev/` regularly. You can do this by
 We recommend reguarly pushing your work to this repository; your last push before the deadline will count as your submission.
 
 Every time you push your solutions to this repository, the evaluation tool will analyze it and produce feedback for you.
-You can inspect the generated feedback on the GitLab page of your reposiroty in the `result` branch.
+You can inspect the generated feedback on the GitLab page of your repository in the `result` branch.
 
 ![TODO: add screenshot]()
 
