@@ -23,6 +23,5 @@ type Output =
       violations: Flow list }
 
 
-// "Start you implementation here"
 let analysis (src: string) (input: Input) : Output =
-    failwith "Security analysis not yet implemented"
+    failwith "Security analysis not yet implemented" // TODO: start here
