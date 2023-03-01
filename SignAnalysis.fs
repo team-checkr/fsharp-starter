@@ -27,6 +27,5 @@ type Output =
       nodes: Map<string, Set<SignAssignment>> }
 
 
-// Start you implementation here
 let analysis (src: string) (input: Input) : Output =
-    failwith "Sign analysis not yet implemented"
+    failwith "Sign analysis not yet implemented" // TODO: start here
