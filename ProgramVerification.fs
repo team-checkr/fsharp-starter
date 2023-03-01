@@ -10,6 +10,5 @@ type Input = { post_condition: string }
 
 type Output = { pre_condition: string }
 
-// Start you implementation here
 let analysis (src: string) (input: Input) : Output =
-    failwith "Program verification analysis not yet implemented"
+    failwith "Program verification analysis not yet implemented" // TODO: start here
