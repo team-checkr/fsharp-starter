@@ -28,6 +28,5 @@ type ProgramTrace =
 
 type Output = List<ProgramTrace>
 
-// Start you implementation here
 let analysis (src: string) (input: Input) : Output =
-    failwith "Interpreter not yet implemented"
+    failwith "Interpreter not yet implemented" // TODO: start here

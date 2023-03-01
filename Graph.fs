@@ -12,6 +12,5 @@ type Input = { determinism: Determinism }
 
 type Output = { dot: string }
 
-// Start your implementation here
 let analysis (src: string) (input: Input) : Output =
-    failwith "Graph analysis not yet implemented"
+    failwith "Graph analysis not yet implemented" // TODO: start here
