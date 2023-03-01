@@ -83,4 +83,4 @@ It is recommended to update the binaries in `dev/` regularly. You do this by run
 
 Every time you push your Git repository, your code is ready to be evaluated automatically by your teachers.
 
-When your project has been evaluated, the results can be seen (at GitLab) in the `result` branch.
+When your project has been evaluated, the results can be seen (at GitLab) in the "result" branch.
