@@ -49,6 +49,11 @@ let main (args) =
         | Error e -> Console.Error.WriteLine("Parse error: {0}", e)
 
         0
+    | [ "parse"; src ] ->
+        let output:string = Parse.analysis src
+        Console.WriteLine("{0}", output)
+
+        0
     | [ "graph"; src; input ] ->
         let input = JsonConvert.DeserializeObject<Graph.Input> input
         let output: Graph.Output = Graph.analysis src input
@@ -82,6 +87,7 @@ let main (args) =
     | _ ->
         let commands =
             [ "calc <EXPRESSION...>"
+              "parse <SRC>"
               "graph <SRC> <INPUT>"
               "interpreter <SRC> <INPUT>"
               "pv <SRC> <INPUT>"

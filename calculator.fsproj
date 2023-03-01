@@ -20,6 +20,7 @@
     <Compile Include="Parser.fsi" />
     <Compile Include="Parser.fs" />
     <Compile Include="Lexer.fs" />
+    <Compile Include="Parse.fs" />
     <Compile Include="Graph.fs" />
     <Compile Include="Interpreter.fs" />
     <Compile Include="SignAnalysis.fs" />
