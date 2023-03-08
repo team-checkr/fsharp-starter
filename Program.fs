@@ -49,8 +49,8 @@ let main (args) =
         | Error e -> Console.Error.WriteLine("Parse error: {0}", e)
 
         0
-    | [ "parse"; src ] ->
-        let output:string = Parse.analysis src
+    | "parse" :: src :: _ ->
+        let output: string = Parse.analysis src
         Console.WriteLine("{0}", output)
 
         0
