@@ -51,7 +51,7 @@ let main (args) =
         0
     | "parse" :: src :: _ ->
         let output: string = Parse.analysis src
-        Console.WriteLine("{0}", output)
+        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
     | [ "graph"; src; input ] ->
