@@ -4,11 +4,13 @@ type AOp =
     | Add
     | Sub
     | Mul
+    | Pow
     override this.ToString() =
         match this with
         | Add -> "+"
         | Sub -> "-"
         | Mul -> "*"
+        | Pow -> "^"
 
 type AExpr =
     | Number of int
