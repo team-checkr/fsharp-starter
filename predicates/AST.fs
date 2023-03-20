@@ -101,6 +101,8 @@ type Predicate =
 
 type SerializedPredicate = { predicate: string }
 
+let serialize_predicate (pred: Predicate) = { predicate = string pred }
+
 type BExpr = Predicate
 
 type Command =
@@ -121,7 +123,7 @@ type Command =
 
 and GuardedCommand =
     | Guard of BExpr * Command
-    | Choice of Command * Command
+    | Choice of GuardedCommand * GuardedCommand
     override this.ToString() =
         match this with
         | Guard (b, cmd) -> $"{b} -> {cmd}"

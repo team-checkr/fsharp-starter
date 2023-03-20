@@ -12,7 +12,7 @@ open Predicate.AST
 type Input = unit
 
 type Output =
-    { verification_conditions: List<string> }
+    { verification_conditions: List<SerializedPredicate> }
 
 let analysis (src: string) (input: Input) : Output =
     let (P, C, Q) =
@@ -29,4 +29,4 @@ let analysis (src: string) (input: Input) : Output =
         failwith "Program verification analysis not yet implemented" // TODO: start here
 
     // Let this line stay as it is.
-    { verification_conditions = List.map string verification_conditions }
+    { verification_conditions = List.map serialize_predicate verification_conditions }

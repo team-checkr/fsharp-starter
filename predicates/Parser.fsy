@@ -6,7 +6,7 @@ open Predicate.AST
 %token <string> VAR LVAR
 %token TRUE FALSE
 %token SKIP IF FI DO OD
-%token ASSIGN SEP ARROW
+%token ASSIGN SEP ARROW CHOICE
 %token LPAR RPAR LBRA RBRA LCUR RCUR
 %token FORALL EXISTS COLONCOLON
 %token ADD SUB MUL POW LT LE GT GE EQ NE OR LOR AND LAND IMPLIES NOT
@@ -51,7 +51,7 @@ command:
 
 guarded_command:
   | bexpr ARROW command  { Guard($1, $3) }
-  | command SEP command  { Choice($1, $3) }
+  | guarded_command CHOICE guarded_command  { Choice($1, $3) }
 
 predicate_block: LCUR predicate RCUR       { $2 }
 
@@ -97,6 +97,7 @@ laexpr:
   | laexpr ADD laexpr           { Binary($1, Add, $3) }
   | laexpr SUB laexpr           { Binary($1, Sub, $3) }
   | laexpr MUL laexpr           { Binary($1, Mul, $3) }
+  | laexpr POW laexpr           { Binary($1, Pow, $3) }
   | function                    { Function $1 }
   | LPAR laexpr RPAR            { $2 }
 
@@ -107,7 +108,7 @@ aexpr:
   | aexpr ADD aexpr             { Binary($1, Add, $3) }
   | aexpr SUB aexpr             { Binary($1, Sub, $3) }
   | aexpr MUL aexpr             { Binary($1, Mul, $3) }
-  | aexpr POW aexpr             { Binary($1, Mul, $3) }
+  | aexpr POW aexpr             { Binary($1, Pow, $3) }
   | function                    { Function $1 }
   | LPAR aexpr RPAR             { $2 }
 

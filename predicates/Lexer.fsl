@@ -10,7 +10,7 @@ System.Globalization.CultureInfo.CurrentCulture <- new System.Globalization.Cult
 
 // We define macros for some regular expressions we will use later
 let digit       = ['0'-'9']
-let num         = digit+ ( '.' digit+)?  ('E' ('+'|'-')? digit+ )?
+let num         = '-'? digit+ ( '.' digit+)?  ('E' ('+'|'-')? digit+ )?
 let var         = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
 let lvar        = '_' var
 let whitespace  = [' ' '\t']
@@ -36,6 +36,7 @@ rule tokenize = parse
 | ":="          { ASSIGN }
 | ";"           { SEP }
 | "->"          { ARROW }
+| "[]"          { CHOICE }
 | '('           { LPAR }
 | ')'           { RPAR }
 | '['           { LBRA }
@@ -48,6 +49,7 @@ rule tokenize = parse
 | "+"           { ADD }
 | "-"           { SUB }
 | "*"           { MUL }
+| "^"           { POW }
 | "<"           { LT }
 | "<="          { LE }
 | ">"           { GT }
