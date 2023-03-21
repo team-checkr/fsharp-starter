@@ -13,6 +13,8 @@ open Predicate.AST
 %token COMMA DIVISION MIN MAX COUNT LENGTH FAC FIB
 %token EOF
 
+%left CHOICE
+%left EXISTS FORALL COLONCOLON
 %right SEP BRANCH ARROW
 %right IMPLIES
 %left LOR OR
@@ -113,14 +115,14 @@ aexpr:
   | LPAR aexpr RPAR             { $2 }
 
 function:
-  | DIVISION aexpr COMMA aexpr  { Division($2, $4) }
-  | MIN aexpr COMMA aexpr       { Min($2, $4) }
-  | MAX aexpr COMMA aexpr       { Max($2, $4) }
-  | COUNT VAR COMMA aexpr       { Count($2, $4) }
-  | COUNT LVAR COMMA aexpr      { LogicalCount($2, $4) }
-  | LENGTH VAR                  { Length $2 }
-  | LENGTH LVAR                 { LogicalLength $2 }
-  | FAC aexpr                   { Fac $2 }
-  | FIB aexpr                   { Fib $2 }
+  | DIVISION LPAR aexpr COMMA aexpr RPAR  { Division($3, $5) }
+  | MIN LPAR aexpr COMMA aexpr RPAR       { Min($3, $5) }
+  | MAX LPAR aexpr COMMA aexpr RPAR       { Max($3, $5) }
+  | COUNT LPAR VAR COMMA aexpr RPAR       { Count($3, $5) }
+  | COUNT LPAR LVAR COMMA aexpr RPAR      { LogicalCount($3, $5) }
+  | LENGTH LPAR VAR RPAR                  { Length $3 }
+  | LENGTH LPAR LVAR RPAR                 { LogicalLength $3 }
+  | FAC LPAR aexpr RPAR                   { Fac $3 }
+  | FIB LPAR aexpr RPAR                   { Fib $3 }
 
 %%
