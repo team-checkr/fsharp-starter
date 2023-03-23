@@ -26,7 +26,7 @@ let analysis (src: string) (input: Input) : Output =
     Console.Error.WriteLine("Q = {0}", Q)
 
     let verification_conditions: List<Predicate> =
-        failwith "Program verification analysis not yet implemented" // TODO: start here
+        failwith "Program verification not yet implemented" // TODO: start here
 
     // Let this line stay as it is.
     { verification_conditions = List.map serialize_predicate verification_conditions }
