@@ -18,7 +18,9 @@ let analysis (src: string) (input: Input) : Output =
     let (P, C, Q) =
         match Predicate.Parse.parse src with
         | Ok (AnnotatedCommand (P, C, Q)) -> P, C, Q
-        | Error e -> failwith $"Failed to parse: {e}"
+        | Error e ->
+            failwith
+                $"Failed to parse.\n\nDid you remember to surround your program with predicate blocks, like so?\n\n  {{ true }} skip {{ true }}\n\n{e}"
 
     // TODO: Remove these print statements
     Console.Error.WriteLine("P = {0}", P)
