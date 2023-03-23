@@ -1,0 +1,128 @@
+%{
+open Predicate.AST
+%}
+
+%token <int> NUM
+%token <string> VAR LVAR
+%token TRUE FALSE
+%token SKIP IF FI DO OD
+%token ASSIGN SEP ARROW CHOICE
+%token LPAR RPAR LBRA RBRA LCUR RCUR
+%token FORALL EXISTS COLONCOLON
+%token ADD SUB MUL POW LT LE GT GE EQ NE OR LOR AND LAND IMPLIES NOT
+%token COMMA DIVISION MIN MAX COUNT LENGTH FAC FIB
+%token EOF
+
+%left CHOICE
+%left EXISTS FORALL COLONCOLON
+%right SEP BRANCH ARROW
+%right IMPLIES
+%left LOR OR
+%left LAND AND
+%left EQ NE GT LT GQ LQ
+%right NOT
+%left ADD SUB
+%left MUL
+%right POW
+
+%start start
+
+%type <AST.AnnotatedCommand> start
+%type <AST.AnnotatedCommand> annotated_command
+%type <AST.Command> command
+%type <AST.GuardedCommand> guarded_command
+%type <AST.Predicate> predicate_block
+%type <AST.Predicate> predicate
+%type <AST.BExpr> bexpr
+%type <AST.AExpr> aexpr
+
+%%
+
+start: annotated_command EOF             { $1 }
+
+annotated_command:
+  | predicate_block command predicate_block  { AnnotatedCommand($1, $2, $3) }
+
+command:
+  | SKIP                                   { Skip }
+  | command SEP command                    { Sep($1, $3) }
+  | IF guarded_command FI                  { If $2 }
+  | DO predicate_block guarded_command OD  { Do($2, $3) }
+  | VAR ASSIGN aexpr                       { Assign($1, $3) }
+  | VAR LBRA aexpr RBRA ASSIGN aexpr       { ArrayAssign($1, $3, $6) }
+
+guarded_command:
+  | bexpr ARROW command  { Guard($1, $3) }
+  | guarded_command CHOICE guarded_command  { Choice($1, $3) }
+
+predicate_block: LCUR predicate RCUR       { $2 }
+
+predicate:
+  | TRUE                              { Bool true }
+  | FALSE                             { Bool false }
+  | laexpr rop laexpr                 { RelationalOp($1, $2, $3) }
+  | predicate OR predicate            { BooleanOp($1, Or, $3) }
+  | predicate LOR predicate           { BooleanOp($1, LOr, $3) }
+  | predicate AND predicate           { BooleanOp($1, And, $3) }
+  | predicate LAND predicate          { BooleanOp($1, LAnd, $3) }
+  | predicate IMPLIES predicate       { BooleanOp($1, Implies, $3) }
+  | EXISTS LVAR COLONCOLON predicate  { Exists($2, $4) }
+  | FORALL LVAR COLONCOLON predicate  { Forall($2, $4) }
+  | NOT predicate                     { Not $2 }
+  | LPAR predicate RPAR               { $2 }
+
+rop:
+  | LT { Lt }
+  | LE { Le }
+  | GT { Gt }
+  | GE { Ge }
+  | EQ { Eq }
+  | NE { Ne }
+
+bexpr:
+  | TRUE              { Bool true }
+  | FALSE             { Bool false }
+  | aexpr rop aexpr   { RelationalOp($1, $2, $3) }
+  | bexpr OR bexpr    { BooleanOp($1, Or, $3) }
+  | bexpr LOR bexpr   { BooleanOp($1, LOr, $3) }
+  | bexpr AND bexpr   { BooleanOp($1, And, $3) }
+  | bexpr LAND bexpr  { BooleanOp($1, LAnd, $3) }
+  | NOT bexpr         { Not $2 }
+  | LPAR bexpr RPAR   { $2 }
+
+laexpr:
+  | NUM                         { Number $1 }
+  | VAR                         { Variable $1 }
+  | LVAR                        { LogicalVariable $1 }
+  | VAR LBRA laexpr RBRA        { Array($1, $3) }
+  | LVAR LBRA laexpr RBRA       { LogicalArray($1, $3) }
+  | laexpr ADD laexpr           { Binary($1, Add, $3) }
+  | laexpr SUB laexpr           { Binary($1, Sub, $3) }
+  | laexpr MUL laexpr           { Binary($1, Mul, $3) }
+  | laexpr POW laexpr           { Binary($1, Pow, $3) }
+  | function                    { Function $1 }
+  | LPAR laexpr RPAR            { $2 }
+
+aexpr:
+  | NUM                         { Number $1 }
+  | VAR                         { Variable $1 }
+  | VAR LBRA aexpr RBRA         { Array($1, $3) }
+  | aexpr ADD aexpr             { Binary($1, Add, $3) }
+  | aexpr SUB aexpr             { Binary($1, Sub, $3) }
+  | aexpr MUL aexpr             { Binary($1, Mul, $3) }
+  | aexpr POW aexpr             { Binary($1, Pow, $3) }
+  | function                    { Function $1 }
+  | LPAR aexpr RPAR             { $2 }
+
+function:
+  | DIVISION LPAR aexpr COMMA aexpr RPAR  { Division($3, $5) }
+  | MIN LPAR aexpr COMMA aexpr RPAR       { Min($3, $5) }
+  | MAX LPAR aexpr COMMA aexpr RPAR       { Max($3, $5) }
+  | COUNT LPAR VAR COMMA aexpr RPAR       { Count($3, $5) }
+  | COUNT LPAR LVAR COMMA aexpr RPAR      { LogicalCount($3, $5) }
+  | LENGTH LPAR VAR RPAR                  { Length $3 }
+  | LENGTH LPAR LVAR RPAR                 { LogicalLength $3 }
+  | FAC LPAR aexpr RPAR                   { Fac $3 }
+  | FIB LPAR aexpr RPAR                   { Fib $3 }
+
+%%
