@@ -21,6 +21,19 @@
     <Compile Include="Parser.fs" />
     <Compile Include="Lexer.fs" />
     <Compile Include="Parse.fs" />
+
+    <Compile Include="predicates/AST.fs" />
+    <FsYacc Include="predicates/Parser.fsy">
+      <OtherFlags>--module Predicate.Parser -o predicates/Parser.fs</OtherFlags>
+    </FsYacc>
+    <FsLex Include="predicates/Lexer.fsl">
+      <OtherFlags>--module Predicate.Lexer --unicode -o predicates/Lexer.fs</OtherFlags>
+    </FsLex>
+    <Compile Include="predicates/Parser.fsi" />
+    <Compile Include="predicates/Parser.fs" />
+    <Compile Include="predicates/Lexer.fs" />
+    <Compile Include="predicates/Parse.fs" />
+
     <Compile Include="Graph.fs" />
     <Compile Include="Interpreter.fs" />
     <Compile Include="SignAnalysis.fs" />

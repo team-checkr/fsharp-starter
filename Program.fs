@@ -90,7 +90,7 @@ let main (args) =
               "parse <SRC>"
               "graph <SRC> <INPUT>"
               "interpreter <SRC> <INPUT>"
-              "pv <SRC> <INPUT>"
+              "program-verification <SRC> <INPUT>"
               "sign <SRC> <INPUT>"
               "security <SRC> <INPUT>" ]
 

@@ -1,0 +1,75 @@
+// The generated lexer module will start with this code
+{
+open FSharp.Text.Lexing
+open System
+// open the module that defines the tokens
+open Predicate.Parser
+// Set the language to English such that 4.0 is parsed as 4 and not 40.
+System.Globalization.CultureInfo.CurrentCulture <- new System.Globalization.CultureInfo("en-US")
+}
+
+// We define macros for some regular expressions we will use later
+let digit       = ['0'-'9']
+let num         = '-'? digit+ ( '.' digit+)?  ('E' ('+'|'-')? digit+ )?
+let var         = ['a'-'z' 'A'-'Z']['a'-'z' 'A'-'Z' '0'-'9' '_']*
+let lvar        = '_' var
+let whitespace  = [' ' '\t']
+let newline     = "\n\r" | '\n' | '\r'
+
+// We define now the rules for recognising and building tokens
+// for each of the tokens of our language we need a rule
+// NOTE: rules are applied in order top-down.
+//       This is important when tokens overlap (not in this example)
+rule tokenize = parse
+// deal with tokens that need to be ignored (skip them)
+| whitespace    { tokenize lexbuf }
+| newline       { lexbuf.EndPos <- lexbuf.EndPos.NextLine; tokenize lexbuf; }
+// deal with tokens that need to be built
+| num           { NUM (int (LexBuffer<_>.LexemeString lexbuf)) }
+| "true"        { TRUE }
+| "false"       { FALSE }
+| "skip"        { SKIP }
+| "if"          { IF }
+| "fi"          { FI }
+| "do"          { DO }
+| "od"          { OD }
+| ":="          { ASSIGN }
+| ";"           { SEP }
+| "->"          { ARROW }
+| "[]"          { CHOICE }
+| '('           { LPAR }
+| ')'           { RPAR }
+| '['           { LBRA }
+| ']'           { RBRA }
+| '{'           { LCUR }
+| '}'           { RCUR }
+| "forall"      { FORALL }
+| "exists"      { EXISTS }
+| "::"          { COLONCOLON }
+| "+"           { ADD }
+| "-"           { SUB }
+| "*"           { MUL }
+| "^"           { POW }
+| "<"           { LT }
+| "<="          { LE }
+| ">"           { GT }
+| ">="          { GE }
+| "="           { EQ }
+| "!="          { NE }
+| "||"          { OR }
+| "|"           { LOR }
+| "&&"          { AND }
+| "&"           { LAND }
+| "==>"         { IMPLIES }
+| "!"           { NOT }
+| ","           { COMMA }
+| "division"    { DIVISION}
+| "min"         { MIN}
+| "max"         { MAX}
+| "count"       { COUNT}
+| "length"      { LENGTH}
+| "fac"         { FAC}
+| "fib"         { FIB}
+| var           { VAR (LexBuffer<_>.LexemeString lexbuf) }
+| lvar          { LVAR (LexBuffer<_>.LexemeString lexbuf) }
+| eof           { EOF }

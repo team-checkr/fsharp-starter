@@ -1,4 +1,9 @@
 compile = "dotnet publish -c Release --self-contained --output bin/run"
 run = "./bin/run/calculator"
 watch = ["*.fs", "*.fsl", "*.fsy"]
-ignore = ["Parser.fs", "Lexer.fs"]
+ignore = [
+    "Parser.fs",
+    "Lexer.fs",
+    "predicates/Parser.fs",
+    "predicates/Lexer.fs",
+]
