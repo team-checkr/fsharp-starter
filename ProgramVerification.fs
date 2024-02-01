@@ -9,14 +9,14 @@ open Predicate.AST
     validation and evaluation tools!
 *)
 
-type Input = unit
+type Input = { commands: string }
 
 type Output =
     { verification_conditions: List<SerializedPredicate> }
 
-let analysis (src: string) (input: Input) : Output =
+let analysis (input: Input) : Output =
     let (P, C, Q) =
-        match Predicate.Parse.parse src with
+        match Predicate.Parse.parse input.commands with
         | Ok (AnnotatedCommand (P, C, Q)) -> P, C, Q
         | Error e ->
             failwith

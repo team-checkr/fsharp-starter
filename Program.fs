@@ -49,50 +49,51 @@ let main (args) =
         | Error e -> Console.Error.WriteLine("Parse error: {0}", e)
 
         0
-    | "parse" :: src :: _ ->
-        let output: string = Parse.analysis src
+    | ["Parse"; input ] ->
+        let input = JsonConvert.DeserializeObject<Parse.Input> input
+        let output: Parse.Output = Parse.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "graph"; src; input ] ->
+    | [ "Graph"; input ] ->
         let input = JsonConvert.DeserializeObject<Graph.Input> input
-        let output: Graph.Output = Graph.analysis src input
+        let output: Graph.Output = Graph.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "interpreter"; src; input ] ->
+    | [ "Interpreter"; input ] ->
         let input = JsonConvert.DeserializeObject<Interpreter.Input> input
-        let output: Interpreter.Output = Interpreter.analysis src input
+        let output: Interpreter.Output = Interpreter.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "program-verification"; src; input ] ->
+    | [ "ProgramVerification"; input ] ->
         let input = JsonConvert.DeserializeObject<ProgramVerification.Input> input
-        let output: ProgramVerification.Output = ProgramVerification.analysis src input
+        let output: ProgramVerification.Output = ProgramVerification.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "sign"; src; input ] ->
+    | [ "Sign"; input ] ->
         let input = JsonConvert.DeserializeObject<SignAnalysis.Input> input
-        let output: SignAnalysis.Output = SignAnalysis.analysis src input
+        let output: SignAnalysis.Output = SignAnalysis.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "security"; src; input ] ->
+    | [ "Security"; input ] ->
         let input = JsonConvert.DeserializeObject<Security.Input> input
-        let output: Security.Output = Security.analysis src input
+        let output: Security.Output = Security.analysis input
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
     | _ ->
         let commands =
             [ "calc <EXPRESSION...>"
-              "parse <SRC>"
-              "graph <SRC> <INPUT>"
-              "interpreter <SRC> <INPUT>"
-              "program-verification <SRC> <INPUT>"
-              "sign <SRC> <INPUT>"
-              "security <SRC> <INPUT>" ]
+              "parse <INPUT>"
+              "Graph <INPUT>"
+              "Interpreter <INPUT>"
+              "ProgramVerification <INPUT>"
+              "Sign <INPUT>"
+              "Security <INPUT>" ]
 
         Console.Error.WriteLine(
             "\x1B[1;31merror:\x1B[0m unrecognized input: \x1B[0;33m'{0}'\x1B[0m\n\n{1}\n\nAvailable commands:\n{2}",

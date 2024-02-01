@@ -25,13 +25,23 @@ let parse parser src =
         eprintf "\n"
         Error(ParseError(pos, lastToken, e))
 
-let rec prettyPrint ast =
+let rec prettyPrint ast : string =
    // TODO: start here
    failwith "GCL parser not yet implemented"
 
-let analysis (src: string) : string =
-    match parse Parser.start (src) with
+(*
+    This defines the input and output for the security analysis. Please do not
+    change the definitions below as they are needed for the validation and
+    evaluation tools!
+*)
+
+type Input = { commands: string }
+
+type Output = { pretty: string }
+
+let analysis (input: Input) : Output =
+    match parse Parser.start input.commands with
         | Ok ast ->
             Console.Error.WriteLine("> {0}", ast)
-            prettyPrint ast
-        | Error e -> "Parse error: {0}"
+            { pretty = prettyPrint ast }
+        | Error e -> { pretty = String.Format("Parse error: {0}", e) }

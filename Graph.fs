@@ -8,9 +8,10 @@ open Types
     evaluation tools!
 *)
 
-type Input = { determinism: Determinism }
+type Input = { commands: string
+               determinism: Determinism }
 
 type Output = { dot: string }
 
-let analysis (src: string) (input: Input) : Output =
+let analysis (input: Input) : Output =
     failwith "Graph analysis not yet implemented" // TODO: start here

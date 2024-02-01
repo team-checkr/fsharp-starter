@@ -14,7 +14,8 @@ type Classification =
       arrays: Map<string, string> }
 
 type Input =
-    { lattice: Flow list
+    { commands: string
+      lattice: Flow list
       classification: Classification }
 
 type Output =
@@ -23,5 +24,5 @@ type Output =
       violations: Flow list }
 
 
-let analysis (src: string) (input: Input) : Output =
+let analysis (input: Input) : Output =
     failwith "Security analysis not yet implemented" // TODO: start here

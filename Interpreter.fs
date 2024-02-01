@@ -12,7 +12,8 @@ type InterpreterMemory =
       arrays: Map<string, List<int>> }
 
 type Input =
-    { determinism: Determinism
+    { commands: string
+      determinism: Determinism
       assignment: InterpreterMemory
       trace_length: int }
 
@@ -43,7 +44,7 @@ let prepareConfiguration (c: Configuration<Node>) : Configuration<string> =
       memory = c.memory }
 
 
-let analysis (src: string) (input: Input) : Output =
+let analysis (input: Input) : Output =
     failwith "Interpreter not yet implemented" // TODO: start here
     let execution_sequence: List<Configuration<Node>> = failwith "TODO"
     let final: TerminationState = failwith "TODO"

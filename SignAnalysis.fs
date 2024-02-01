@@ -3,7 +3,7 @@ module SignAnalysis
 open Types
 
 (*
-     This defines the input and output of the sign analysis. Please do not
+    This defines the input and output of the sign analysis. Please do not
     change the definitions below as they are needed for the validation and
     evaluation tools!
 *)
@@ -18,7 +18,8 @@ type SignAssignment =
       arrays: Map<string, Set<Sign>> }
 
 type Input =
-    { determinism: Determinism
+    { commands: string
+      determinism: Determinism
       assignment: SignAssignment }
 
 type Output =
@@ -27,5 +28,5 @@ type Output =
       nodes: Map<string, Set<SignAssignment>> }
 
 
-let analysis (src: string) (input: Input) : Output =
+let analysis (input: Input) : Output =
     failwith "Sign analysis not yet implemented" // TODO: start here
