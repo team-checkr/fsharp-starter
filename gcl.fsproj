@@ -34,6 +34,7 @@
     <Compile Include="predicates/Lexer.fs" />
     <Compile Include="predicates/Parse.fs" />
 
+    <Compile Include="Calc.fs" />
     <Compile Include="Graph.fs" />
     <Compile Include="Interpreter.fs" />
     <Compile Include="SignAnalysis.fs" />

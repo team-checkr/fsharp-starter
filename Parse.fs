@@ -30,7 +30,7 @@ let rec prettyPrint ast : string =
    failwith "GCL parser not yet implemented"
 
 (*
-    This defines the input and output for the security analysis. Please do not
+    This defines the input and output for the parse analysis. Please do not
     change the definitions below as they are needed for the validation and
     evaluation tools!
 *)
@@ -40,7 +40,8 @@ type Input = { commands: string }
 type Output = { pretty: string }
 
 let analysis (input: Input) : Output =
-    match parse Parser.start input.commands with
+    // TODO: change start_expression to start_commands
+    match parse Parser.start_expression input.commands with
         | Ok ast ->
             Console.Error.WriteLine("> {0}", ast)
             { pretty = prettyPrint ast }

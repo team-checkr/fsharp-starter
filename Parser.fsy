@@ -17,19 +17,19 @@ open AST
 
 
 // We declare the initial non-terminal symbol
-%start start
+%start start_expression
 
 // We specify the return type of each of then non-terminal symbols
-%type <AST.expr> start
+%type <AST.expr> start_expression
 %type <AST.expr> expression
 
 // Grammar productions
 %%
 
 // The first production in "formal" notation is
-// start -> expression
+// start_expression -> expression
 // here written:
-start: expression EOF             { $1 }
+start_expression: expression EOF             { $1 }
 
 // Note that we need to insert an End-Of-File (EOF)
 // The code annotation { $1 } specifies that parsing with this production

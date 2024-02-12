@@ -35,18 +35,16 @@ let rec evaluate: expr -> float =
     | UPlusExpr a -> evaluate a
     | UMinusExpr a -> -evaluate a
 
-// Please do not change the main function, with exception to the "calc" case.
-// The other cases are needed for the validation and evaluation tools!
+// Please do not change the main function.
+// The cases are needed for the validation and evaluation tools!
 
 [<EntryPoint>]
 let main (args) =
     match args |> List.ofArray with
-    | "calc" :: input ->
-        match parse Parser.start (String.concat " " input) with
-        | Ok ast ->
-            Console.Error.WriteLine("> {0}", ast)
-            Console.WriteLine("{0}", evaluate ast)
-        | Error e -> Console.Error.WriteLine("Parse error: {0}", e)
+    | ["Calc"; input] ->
+        let input = JsonConvert.DeserializeObject<Calc.Input> input
+        let output: Calc.Output = Calc.analysis input
+        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
     | ["Parse"; input ] ->
@@ -87,8 +85,8 @@ let main (args) =
         0
     | _ ->
         let commands =
-            [ "calc <EXPRESSION...>"
-              "parse <INPUT>"
+            [ "Calc <INPUT>"
+              "Parse <INPUT>"
               "Graph <INPUT>"
               "Interpreter <INPUT>"
               "ProgramVerification <INPUT>"
