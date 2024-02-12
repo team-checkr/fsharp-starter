@@ -65,12 +65,6 @@ let main (args) =
         Console.WriteLine("{0}", JsonConvert.SerializeObject output)
 
         0
-    | [ "ProgramVerification"; input ] ->
-        let input = JsonConvert.DeserializeObject<ProgramVerification.Input> input
-        let output: ProgramVerification.Output = ProgramVerification.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
-
-        0
     | [ "Sign"; input ] ->
         let input = JsonConvert.DeserializeObject<SignAnalysis.Input> input
         let output: SignAnalysis.Output = SignAnalysis.analysis input
@@ -89,7 +83,6 @@ let main (args) =
               "Parse <INPUT>"
               "Graph <INPUT>"
               "Interpreter <INPUT>"
-              "ProgramVerification <INPUT>"
               "Sign <INPUT>"
               "Security <INPUT>" ]
 
