@@ -1,86 +1,73 @@
-# F# Starter
+# GCL – F# Starter
 
-This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment. It also contains an example of a "calculator" program in F# that reads an arithmetic expression from the command line and print the result of evaluating such expression for initial testing.
+This folder contains the skeleton of a parser along with the input and output types for each analysis given in the assignment.
 
 ## Files
 
-F#/FsLexYacc
-* [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions
-* [Parser.fsp](Parser.fsp): The parser for arithmetic expressions
-* [Types.fs](Types.fs): Global types that are used in many analysis
-* [AST.fs](AST.fs): Types for AST of arithmetic expressions
-* [Program.fs](Program.fs): The entry point for the program
-* [Security.fs](Security.fs): File for the security analysis
-* [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis
-* [ProgramVerification.fs](ProgramVerification.fs): File for program verification
-* [Graph.fs](Graph.fs): File for graphs
-* [Interpreter.fs](Interpreter.fs): File for the interpreter
-
+- [Types.fs](Types.fs): Global types that are used in many analyses.
+- [AST.fs](AST.fs): Types for the Abstract Syntax Tree (AST) of arithmetic expressions.
+- [Parser.fsy](Parser.fsy): The parser for arithmetic expressions.
+- [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions.
+- [Calc.fs](Calc.fs): Contains the code for the basic calculator.
+- [Graph.fs](Graph.fs): File for graphs.
+- [Interpreter.fs](Interpreter.fs): File for the interpreter.
+- [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis.
+- [Security.fs](Security.fs): File for the security analysis.
+- [Program.fs](Program.fs): The entry point for the program.
 
 ## Getting started
 
-Building this project requires .NET 7.0. For installation, follow the description matching your platform:
+Building this project requires .NET 8.0. For installation, follow the description matching your platform:
 
 - **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
 - **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
 - **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
 
-To check that you have an up-to-date version run `dotnet --version` to display the version number, which should be something starting with 7. If it does not, consider updating your installation, and if that doesn't work, try uninstalling your current version and installing from scratch.
+To check that you have an up-to-date version run `dotnet --version` to display the version number, which should be something starting with 8. If it does not, consider updating your installation, and if that doesn't work, try uninstalling your current version and installing from scratch.
 
 The next step is getting the code, which is done by cloning this repository and using `cd` to change directory to the newly cloned folder. To do this, make sure that you have your SSH keys set up correctly (instructions for [GitLab](https://docs.gitlab.com/ee/user/ssh.html)).
 
 ## Running the code
 
-To run the program, navigate to the directory of your cloned repository and do:
+The primary way to interact with your code is through Inspectify, to run this simply run:
 
 ```bash
-dotnet run
-```
-
-This should display a list of the available commands to run. Among these are the calculator, which is a good starting point.
-
-To run the calculator do:
-
-```bash
-dotnet run calc "1 + 52 * 23"
-```
-
-## Interactive UI
-
-When you get further, the analysis can be explored in the interactive tool. Run the program in the `dev/` folder matching your operating system.
-
-```bash
-# Windows
-./dev/win.exe --open
-
-# macOS
-./dev/macos --open
-
-# linux
-./dev/linux --open
+# On Windows
+inspectify.ps1 --open
+# On macOS and Linux
+./inspectify.sh --open
 ```
 
 With the `--open` flag this should open the tool at `http://localhost:3000/` in your browser.
 
 The tool knows how to compile your program by the instructions in `run.toml`.
 
-### Downloading updates
+When ever you make changes to your code, it should automatically be recompiled and any analysis will be rerun in Inspectify.
 
-It is recommended to update the binaries in `dev/` regularly. You do this by running the command below matching your platform, and following the instructions when prompted:
+## First steps
 
-```bash
-# Windows
-./dev/win.exe --self-update
+Open the repository in your code editor, and navitage to [`Calc.fs`](Calc.fs). This file contains the starting point for implementing the simple arithmetic calculator.
 
-# macOS
-./dev/macos --self-update
+The first place to look is at the `analysis` function:
 
-# linux
-./dev/linux --self-update
+```fs
+let analysis (input: Input) : Output =
+    ...
 ```
+
+This function parses the expression given from the input, and attempts to `evaluate` the `ast` if parsing succeeded.
+
+The next step, is to look at:
+
+```fs
+let rec evaluate (expr: expr) : Result<int, string> =
+    ...
+```
+
+Initially this contains a `// TODO` comment and a `failwith`. This is where you should start implementing the calculator.
+
+As you develop, you should save your results periodically, and go to Inspectify to see any compilation errors, as well as the results of running the calculator. For this ensure that Inspectify is running, as described in [Getting started](#getting-started).
 
 ## Evaluation
 
 Every time you push your Git repository, your code is ready to be evaluated automatically by your teachers.
-
-When your project has been evaluated, the results can be seen (at GitLab) in the "result" branch.

@@ -1,5 +1,6 @@
 bin/
 obj/
+.bins/
 
 Lexer.fs
 Parser.fs
