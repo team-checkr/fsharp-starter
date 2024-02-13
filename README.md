@@ -20,7 +20,7 @@ This folder contains the skeleton of a parser along with the input and output ty
 Building this project requires .NET 8.0. For installation, follow the description matching your platform:
 
 - **Windows:** Installation instructions for this, can be found [here](https://dotnet.microsoft.com/en-us/download).
-- **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`
+- **macOS:** Building on macOS requires the `dotnet-sdk` package. This can be installed using [Homebrew](https://brew.sh) and running `brew install dotnet-sdk`.
 - **Linux:** There are many ways to install on Linux, but a good starting point might be [this](https://fsharp.org/use/linux/).
 
 To check that you have an up-to-date version run `dotnet --version` to display the version number, which should be something starting with 8. If it does not, consider updating your installation, and if that doesn't work, try uninstalling your current version and installing from scratch.
