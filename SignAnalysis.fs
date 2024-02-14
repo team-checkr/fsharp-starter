@@ -25,7 +25,8 @@ type Input =
 type Output =
     { initial_node: string
       final_node: string
-      nodes: Map<string, Set<SignAssignment>> }
+      nodes: Map<string, Set<SignAssignment>>
+      dot: string }
 
 
 let analysis (input: Input) : Output =
