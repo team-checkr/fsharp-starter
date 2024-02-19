@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+# set -e
 
 if [ -d ".bins" ]; then
     # If the .bins directory exists, navigate into it and pull the latest changes
