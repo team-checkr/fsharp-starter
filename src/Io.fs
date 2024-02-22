@@ -64,16 +64,24 @@ module Parser =
 
 module SecurityAnalysis =
   type Input =
-    { classification: Map<string, SecurityAnalysis.SecurityClassification>
+    { commands: string
+      classification: Map<string, string>
       lattice: SecurityAnalysis.SecurityLatticeInput }
   type Output =
-    { actual: List<string * string>
-      allowed: List<string * string>
-      violations: List<string * string>
+    { actual: List<SecurityAnalysis.Flow>
+      allowed: List<SecurityAnalysis.Flow>
+      violations: List<SecurityAnalysis.Flow>
       is_secure: bool }
+  type Meta =
+    { lattice: SecurityAnalysis.SecurityLattice
+      targets: List<GCL.TargetDef> }
   type SecurityLatticeInput =
-    { rules: List<SecurityAnalysis.SecurityClassification * SecurityAnalysis.SecurityClassification> }
-  type SecurityClassification = string
+    { rules: List<SecurityAnalysis.Flow> }
+  type SecurityLattice =
+    { allowed: List<SecurityAnalysis.Flow> }
+  type Flow =
+    { from: string
+      into: string }
 
 module SignAnalysis =
   type Input =
@@ -102,5 +110,5 @@ module ce_shell =
     | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit
     | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef>
     | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef>
-    | Security of input: SecurityAnalysis.Input * output: SecurityAnalysis.Output * meta: unit
+    | Security of input: SecurityAnalysis.Input * output: SecurityAnalysis.Output * meta: SecurityAnalysis.Meta
 
