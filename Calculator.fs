@@ -1,5 +1,5 @@
-module Calc
-open Io.Calc
+module Calculator
+open Io.Calculator
 
 open AST
 open System

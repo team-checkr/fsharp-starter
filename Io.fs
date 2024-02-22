@@ -2,7 +2,7 @@ module rec Io
 
 open System.Text.Json.Serialization
 
-module Calc =
+module Calculator =
   type Input = { expression: string }
   type Output = { result: string ; error: string }
 
@@ -51,7 +51,7 @@ module SignAnalysis =
 module ce_shell =
   [<JsonFSharpConverter(BaseUnionEncoding = JsonUnionEncoding.UnwrapSingleFieldCases, UnionTagName = "analysis", UnionFieldsName = "io")>]
   type Envs =
-    | Calc of input: Calc.Input * output: Calc.Output * meta: unit
+    | Calculator of input: Calculator.Input * output: Calculator.Output * meta: unit
     | Parser of input: Parser.Input * output: Parser.Output * meta: unit
     | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit
     | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef>

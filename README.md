@@ -8,7 +8,7 @@ This folder contains the skeleton of a parser along with the input and output ty
 - [AST.fs](AST.fs): Types for the Abstract Syntax Tree (AST) of arithmetic expressions.
 - [Parser.fsy](Parser.fsy): The parser for arithmetic expressions.
 - [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions.
-- [Calc.fs](Calc.fs): Contains the code for the basic calculator.
+- [Calculator.fs](Calculator.fs): Contains the code for the basic calculator.
 - [Compiler.fs](Compiler.fs): File for the compiler.
 - [Interpreter.fs](Interpreter.fs): File for the interpreter.
 - [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis.
@@ -46,7 +46,7 @@ When ever you make changes to your code, it should automatically be recompiled a
 
 ## First steps
 
-Open the repository in your code editor, and navitage to [`Calc.fs`](Calc.fs). This file contains the starting point for implementing the simple arithmetic calculator.
+Open the repository in your code editor, and navitage to [`Calculator.fs`](Calculator.fs). This file contains the starting point for implementing the simple arithmetic calculator.
 
 The first place to look is at the `analysis` function:
 

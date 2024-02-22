@@ -41,9 +41,9 @@ let rec evaluate: expr -> float =
 [<EntryPoint>]
 let main (args) =
     match args |> List.ofArray with
-    | ["Calc"; input] ->
-        let input = JsonSerializer.Deserialize<Io.Calc.Input> input
-        let output: Io.Calc.Output = Calc.analysis input
+    | ["Calculator"; input] ->
+        let input = JsonSerializer.Deserialize<Io.Calculator.Input> input
+        let output: Io.Calculator.Output = Calculator.analysis input
         Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
@@ -79,7 +79,7 @@ let main (args) =
         0
     | _ ->
         let commands =
-            [ "Calc <INPUT>"
+            [ "Calculator <INPUT>"
               "Parser <INPUT>"
               "Compiler <INPUT>"
               "Interpreter <INPUT>"

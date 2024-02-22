@@ -23,7 +23,7 @@
     <Compile Include="Lexer.fs" />
 
     <Compile Include="Parser.fs" />
-    <Compile Include="Calc.fs" />
+    <Compile Include="Calculator.fs" />
     <Compile Include="Compiler.fs" />
     <Compile Include="Interpreter.fs" />
     <Compile Include="SignAnalysis.fs" />
