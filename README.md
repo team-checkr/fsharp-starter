@@ -4,16 +4,16 @@ This folder contains the skeleton of a parser along with the input and output ty
 
 ## Files
 
-- [Types.fs](Types.fs): Global types that are used in many analyses.
-- [AST.fs](AST.fs): Types for the Abstract Syntax Tree (AST) of arithmetic expressions.
-- [Parser.fsy](Parser.fsy): The parser for arithmetic expressions.
-- [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions.
-- [Calculator.fs](Calculator.fs): Contains the code for the basic calculator.
-- [Compiler.fs](Compiler.fs): File for the compiler.
-- [Interpreter.fs](Interpreter.fs): File for the interpreter.
-- [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis.
-- [Security.fs](Security.fs): File for the security analysis.
-- [Program.fs](Program.fs): The entry point for the program.
+- [Types.fs](src/Types.fs): Global types that are used in many analyses.
+- [AST.fs](src/AST.fs): Types for the Abstract Syntax Tree (AST) of arithmetic expressions.
+- [Parser.fsy](src/Parser.fsy): The parser for arithmetic expressions.
+- [Lexer.fsl](src/Lexer.fsl): The lexer for arithmetic expressions.
+- [Calculator.fs](src/Calculator.fs): Contains the code for the basic calculator.
+- [Compiler.fs](src/Compiler.fs): File for the compiler.
+- [Interpreter.fs](src/Interpreter.fs): File for the interpreter.
+- [SignAnalysis.fs](src/SignAnalysis.fs): File for the sign analysis.
+- [Security.fs](src/Security.fs): File for the security analysis.
+- [Program.fs](src/Program.fs): The entry point for the program.
 
 ## Getting started
 

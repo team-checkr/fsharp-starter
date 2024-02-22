@@ -9,26 +9,26 @@
 
   <ItemGroup>
     <PackageReference Include="FsLexYacc" Version="10.2.0" />
-    <Compile Include="Types.fs" />
-    <Compile Include="Io.fs" />
-    <Compile Include="AST.fs" />
-    <FsYacc Include="./Grammar.fsy">
-      <OtherFlags>--module Grammar</OtherFlags>
+    <Compile Include="src/Types.fs" />
+    <Compile Include="src/Io.fs" />
+    <Compile Include="src/AST.fs" />
+    <FsYacc Include="src/Grammar.fsy">
+      <OtherFlags>--module Grammar -o src/Grammar.fs</OtherFlags>
     </FsYacc>
-    <FsLex Include="./Lexer.fsl">
-      <OtherFlags>--module Lexer --unicode</OtherFlags>
+    <FsLex Include="src/Lexer.fsl">
+      <OtherFlags>--module Lexer --unicode -o src/Lexer.fs</OtherFlags>
     </FsLex>
-    <Compile Include="Grammar.fsi" />
-    <Compile Include="Grammar.fs" />
-    <Compile Include="Lexer.fs" />
+    <Compile Include="src/Grammar.fsi" />
+    <Compile Include="src/Grammar.fs" />
+    <Compile Include="src/Lexer.fs" />
 
-    <Compile Include="Parser.fs" />
-    <Compile Include="Calculator.fs" />
-    <Compile Include="Compiler.fs" />
-    <Compile Include="Interpreter.fs" />
-    <Compile Include="SignAnalysis.fs" />
-    <Compile Include="Security.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="src/Parser.fs" />
+    <Compile Include="src/Calculator.fs" />
+    <Compile Include="src/Compiler.fs" />
+    <Compile Include="src/Interpreter.fs" />
+    <Compile Include="src/SignAnalysis.fs" />
+    <Compile Include="src/Security.fs" />
+    <Compile Include="src/Program.fs" />
     <PackageReference Include="FSharp.SystemTextJson" Version="1.2.42" />
   </ItemGroup>
 
