@@ -1,5 +1,3 @@
 module Types
 
-type Determinism =
-    | Deterministic
-    | NonDeterministic
+// Use this file to define any types you need across multiple analysis modules

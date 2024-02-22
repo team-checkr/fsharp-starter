@@ -1,7 +1,7 @@
 ﻿open FSharp.Text.Lexing
 open System
-open Newtonsoft.Json
 open AST
+open System.Text.Json
 
 exception ParseError of Position * string * Exception
 
@@ -42,39 +42,39 @@ let rec evaluate: expr -> float =
 let main (args) =
     match args |> List.ofArray with
     | ["Calc"; input] ->
-        let input = JsonConvert.DeserializeObject<Calc.Input> input
-        let output: Calc.Output = Calc.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        let input = JsonSerializer.Deserialize<Io.Calc.Input> input
+        let output: Io.Calc.Output = Calc.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | ["Parse"; input ] ->
-        let input = JsonConvert.DeserializeObject<Parse.Input> input
-        let output: Parse.Output = Parse.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        let input = JsonSerializer.Deserialize<Io.Parser.Input> input
+        let output: Io.Parser.Output = Parse.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | [ "Graph"; input ] ->
-        let input = JsonConvert.DeserializeObject<Graph.Input> input
-        let output: Graph.Output = Graph.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        let input = JsonSerializer.Deserialize<Io.Graph.Input> input
+        let output: Io.Graph.Output = Graph.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | [ "Interpreter"; input ] ->
-        let input = JsonConvert.DeserializeObject<Interpreter.Input> input
-        let output: Interpreter.Output = Interpreter.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        let input = JsonSerializer.Deserialize<Io.Interpreter.Input> input
+        let output: Io.Interpreter.Output = Interpreter.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | [ "Sign"; input ] ->
-        let input = JsonConvert.DeserializeObject<SignAnalysis.Input> input
-        let output: SignAnalysis.Output = SignAnalysis.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        let input = JsonSerializer.Deserialize<Io.SignAnalysis.Input> input
+        let output: Io.SignAnalysis.Output = SignAnalysis.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | [ "Security"; input ] ->
-        let input = JsonConvert.DeserializeObject<Security.Input> input
+        let input = JsonSerializer.Deserialize<Security.Input> input
         let output: Security.Output = Security.analysis input
-        Console.WriteLine("{0}", JsonConvert.SerializeObject output)
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
     | _ ->

@@ -1,4 +1,5 @@
 module Parse
+open Io.Parser
 
 open FSharp.Text.Lexing
 open System
@@ -28,16 +29,6 @@ let parse parser src =
 let rec prettyPrint ast : string =
    // TODO: start here
    failwith "GCL parser not yet implemented"
-
-(*
-    This defines the input and output for the parse analysis. Please do not
-    change the definitions below as they are needed for the validation and
-    evaluation tools!
-*)
-
-type Input = { commands: string }
-
-type Output = { pretty: string }
 
 let analysis (input: Input) : Output =
     // TODO: change start_expression to start_commands
