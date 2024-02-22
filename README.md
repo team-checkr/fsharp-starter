@@ -9,7 +9,7 @@ This folder contains the skeleton of a parser along with the input and output ty
 - [Parser.fsy](Parser.fsy): The parser for arithmetic expressions.
 - [Lexer.fsl](Lexer.fsl): The lexer for arithmetic expressions.
 - [Calc.fs](Calc.fs): Contains the code for the basic calculator.
-- [Graph.fs](Graph.fs): File for graphs.
+- [Compiler.fs](Compiler.fs): File for the compiler.
 - [Interpreter.fs](Interpreter.fs): File for the interpreter.
 - [SignAnalysis.fs](SignAnalysis.fs): File for the sign analysis.
 - [Security.fs](Security.fs): File for the security analysis.

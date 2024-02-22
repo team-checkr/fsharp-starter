@@ -24,7 +24,7 @@
     <Compile Include="Parse.fs" />
 
     <Compile Include="Calc.fs" />
-    <Compile Include="Graph.fs" />
+    <Compile Include="Compiler.fs" />
     <Compile Include="Interpreter.fs" />
     <Compile Include="SignAnalysis.fs" />
     <Compile Include="Security.fs" />
