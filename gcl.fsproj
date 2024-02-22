@@ -12,17 +12,17 @@
     <Compile Include="Types.fs" />
     <Compile Include="Io.fs" />
     <Compile Include="AST.fs" />
-    <FsYacc Include="./Parser.fsy">
-      <OtherFlags>--module Parser</OtherFlags>
+    <FsYacc Include="./Grammar.fsy">
+      <OtherFlags>--module Grammar</OtherFlags>
     </FsYacc>
     <FsLex Include="./Lexer.fsl">
       <OtherFlags>--module Lexer --unicode</OtherFlags>
     </FsLex>
-    <Compile Include="Parser.fsi" />
-    <Compile Include="Parser.fs" />
+    <Compile Include="Grammar.fsi" />
+    <Compile Include="Grammar.fs" />
     <Compile Include="Lexer.fs" />
-    <Compile Include="Parse.fs" />
 
+    <Compile Include="Parser.fs" />
     <Compile Include="Calc.fs" />
     <Compile Include="Compiler.fs" />
     <Compile Include="Interpreter.fs" />

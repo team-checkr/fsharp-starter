@@ -3,7 +3,7 @@
 open FSharp.Text.Lexing
 open System
 // open the module that defines the tokens
-open Parser
+open Grammar
 // Set the language to English such that 4.0 is parsed as 4 and not 40.
 System.Globalization.CultureInfo.CurrentCulture <- new System.Globalization.CultureInfo("en-US")
 }

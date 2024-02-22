@@ -47,9 +47,9 @@ let main (args) =
         Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
-    | ["Parse"; input ] ->
+    | ["Parser"; input ] ->
         let input = JsonSerializer.Deserialize<Io.Parser.Input> input
-        let output: Io.Parser.Output = Parse.analysis input
+        let output: Io.Parser.Output = Parser.analysis input
         Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
@@ -80,7 +80,7 @@ let main (args) =
     | _ ->
         let commands =
             [ "Calc <INPUT>"
-              "Parse <INPUT>"
+              "Parser <INPUT>"
               "Compiler <INPUT>"
               "Interpreter <INPUT>"
               "Sign <INPUT>"

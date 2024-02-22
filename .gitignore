@@ -3,8 +3,8 @@ obj/
 .bins/
 
 Lexer.fs
-Parser.fs
-Parser.fsi
+Grammar.fs
+Grammar.fsi
 
 .fake
 .ionide

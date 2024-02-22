@@ -2,7 +2,6 @@ module Calc
 open Io.Calc
 
 open AST
-open Parse
 open System
 
 let rec evaluate (expr: expr) : Result<int, string> =
@@ -10,7 +9,7 @@ let rec evaluate (expr: expr) : Result<int, string> =
     failwith "expression evaluator not yet implemented"
 
 let analysis (input: Input) : Output =
-    match parse Parser.start_expression input.expression with
+    match Parser.parse Grammar.start_expression input.expression with
     | Ok ast ->
         Console.Error.WriteLine("> {0}", ast)
         match evaluate ast with

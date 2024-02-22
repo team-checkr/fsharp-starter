@@ -1,4 +1,4 @@
-module Parse
+module Parser
 open Io.Parser
 
 open FSharp.Text.Lexing
@@ -32,7 +32,7 @@ let rec prettyPrint ast : string =
 
 let analysis (input: Input) : Output =
     // TODO: change start_expression to start_commands
-    match parse Parser.start_expression input.commands with
+    match parse Grammar.start_expression input.commands with
         | Ok ast ->
             Console.Error.WriteLine("> {0}", ast)
             { pretty = prettyPrint ast }

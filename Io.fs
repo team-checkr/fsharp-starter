@@ -52,7 +52,7 @@ module ce_shell =
   [<JsonFSharpConverter(BaseUnionEncoding = JsonUnionEncoding.UnwrapSingleFieldCases, UnionTagName = "analysis", UnionFieldsName = "io")>]
   type Envs =
     | Calc of input: Calc.Input * output: Calc.Output * meta: unit
-    | Parse of input: Parser.Input * output: Parser.Output * meta: unit
+    | Parser of input: Parser.Input * output: Parser.Output * meta: unit
     | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit
     | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef>
     | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef>
