@@ -1,39 +1,5 @@
-﻿open FSharp.Text.Lexing
-open System
-open AST
+﻿open System
 open System.Text.Json
-
-exception ParseError of Position * string * Exception
-
-let parse parser src =
-    let lexbuf = LexBuffer<char>.FromString src
-
-    let parser = parser Lexer.tokenize
-
-    try
-        Ok(parser lexbuf)
-    with
-    | e ->
-        let pos = lexbuf.EndPos
-        let line = pos.Line
-        let column = pos.Column
-        let message = e.Message
-        let lastToken = new String(lexbuf.Lexeme)
-        eprintf "Parse failed at line %d, column %d:\n" line column
-        eprintf "Last token: %s" lastToken
-        eprintf "\n"
-        Error(ParseError(pos, lastToken, e))
-
-let rec evaluate: expr -> float =
-    function
-    | Num x -> x
-    | TimesExpr (a, b) -> evaluate a * evaluate b
-    | DivExpr (a, b) -> evaluate a / evaluate b
-    | PlusExpr (a, b) -> evaluate a + evaluate b
-    | MinusExpr (a, b) -> evaluate a - evaluate b
-    | PowExpr (a, b) -> evaluate a ** evaluate b
-    | UPlusExpr a -> evaluate a
-    | UMinusExpr a -> -evaluate a
 
 // Please do not change the main function.
 // The cases are needed for the validation and evaluation tools!
@@ -72,8 +38,8 @@ let main (args) =
 
         0
     | [ "Security"; input ] ->
-        let input = JsonSerializer.Deserialize<Security.Input> input
-        let output: Security.Output = Security.analysis input
+        let input = JsonSerializer.Deserialize<Io.SecurityAnalysis.Input> input
+        let output: Io.SecurityAnalysis.Output = SecurityAnalysis.analysis input
         Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0

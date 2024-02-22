@@ -15,7 +15,7 @@ This folder contains the skeleton of a parser along with the input and output ty
 - [Security.fs](src/Security.fs): File for the security analysis.
 - [Program.fs](src/Program.fs): The entry point for the program.
 
-## Getting started
+## Installing
 
 Building this project requires .NET 8.0. For installation, follow the description matching your platform:
 

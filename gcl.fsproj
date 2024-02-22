@@ -27,7 +27,7 @@
     <Compile Include="src/Compiler.fs" />
     <Compile Include="src/Interpreter.fs" />
     <Compile Include="src/SignAnalysis.fs" />
-    <Compile Include="src/Security.fs" />
+    <Compile Include="src/SecurityAnalysis.fs" />
     <Compile Include="src/Program.fs" />
     <PackageReference Include="FSharp.SystemTextJson" Version="1.2.42" />
   </ItemGroup>
