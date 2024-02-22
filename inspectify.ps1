@@ -4,11 +4,11 @@ $ErrorActionPreference = "Stop"
 if (Test-Path .bins) {
     # If the .bins directory exists, navigate into it and pull the latest changes
     Set-Location .bins
-    git pull -q
+    git pull
     Set-Location ..
 } else {
     # If the .bins directory does not exist, clone the repository
-    git clone -q https://github.com/team-checkr/inspectify-binaries.git .bins
+    git clone https://github.com/team-checkr/inspectify-binaries.git .bins
 }
 
 # Unconditionally run the Windows binary

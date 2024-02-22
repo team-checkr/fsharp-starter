@@ -4,10 +4,10 @@
 
 if [ -d ".bins" ]; then
     # If the .bins directory exists, navigate into it and pull the latest changes
-    (cd .bins && git pull -q)
+    (cd .bins && git pull)
 else
     # If the .bins directory does not exist, clone the repository
-    git clone -q https://github.com/team-checkr/inspectify-binaries.git .bins
+    git clone https://github.com/team-checkr/inspectify-binaries.git .bins
 fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
