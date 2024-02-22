@@ -44,6 +44,10 @@ The tool knows how to compile your program by the instructions in `run.toml`.
 
 When ever you make changes to your code, it should automatically be recompiled and any analysis will be rerun in Inspectify.
 
+> **Note:** The first time you try to run `inspectify` might take a few minutes because the script will download various dependencies. Depending on your system, you might also have to restart your computer after successfully running the script for the first time.
+
+For most tasks, there is a reference implementation that you can use (by checking the corresponding button) for comparison.
+
 ## First steps
 
 Open the repository in your code editor, and navitage to [`Calculator.fs`](Calculator.fs). This file contains the starting point for implementing the simple arithmetic calculator.
@@ -66,7 +70,7 @@ let rec evaluate (expr: expr) : Result<int, string> =
 
 Initially this contains a `// TODO` comment and a `failwith`. This is where you should start implementing the calculator.
 
-As you develop, you should save your results periodically, and go to Inspectify to see any compilation errors, as well as the results of running the calculator. For this ensure that Inspectify is running, as described in [Getting started](#getting-started).
+As you develop, you should save your results periodically, and go to Inspectify to see any compilation errors, as well as the results of running the calculator. For this ensure that Inspectify is running, as described in [running the code](#running-the-code).
 
 ## Evaluation
 
