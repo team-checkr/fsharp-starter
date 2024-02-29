@@ -36,7 +36,7 @@ module Interpreter =
     { commands: string
       determinism: GCL.Determinism
       assignment: Interpreter.InterpreterMemory
-      trace_length: int64 }
+      trace_length: int32 }
   type Output =
     { initial_node: string
       final_node: string
@@ -44,8 +44,8 @@ module Interpreter =
       trace: List<Interpreter.Step>
       termination: Interpreter.TerminationState }
   type InterpreterMemory =
-    { variables: Map<GCL.Variable, int64>
-      arrays: Map<GCL.Array, List<int64>> }
+    { variables: Map<GCL.Variable, int32>
+      arrays: Map<GCL.Array, List<int32>> }
   [<JsonFSharpConverter(BaseUnionEncoding = JsonUnionEncoding.ExternalTag + JsonUnionEncoding.UnwrapFieldlessTags + JsonUnionEncoding.UnwrapSingleFieldCases)>]
   type TerminationState =
     | Running
