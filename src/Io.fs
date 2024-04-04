@@ -109,6 +109,6 @@ module ce_shell =
     | Parser of input: Parser.Input * output: Parser.Output * meta: unit
     | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit
     | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef>
-    | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef>
     | Security of input: SecurityAnalysis.Input * output: SecurityAnalysis.Output * meta: SecurityAnalysis.Meta
+    | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef>
 
