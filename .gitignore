@@ -3,6 +3,7 @@ obj/
 .bins/
 
 Lexer.fs
+Lexer.fsi
 Grammar.fs
 Grammar.fsi
 
