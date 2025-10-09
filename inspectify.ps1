@@ -8,7 +8,7 @@ if (Test-Path .bins) {
     Set-Location ..
 } else {
     # If the .bins directory does not exist, clone the repository
-    git clone https://github.com/team-checkr/inspectify-binaries.git .bins
+    git clone --depth 1 https://github.com/team-checkr/inspectify-binaries.git .bins
 }
 
 # Unconditionally run the Windows binary
