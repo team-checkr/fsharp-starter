@@ -22,12 +22,12 @@
     <Compile Include="src/Grammar.fs" />
     <Compile Include="src/Lexer.fs" />
 
-    <Compile Include="src/BiGCL.fs" />
-    <Compile Include="src/RiscV.fs" />
     <Compile Include="src/Parser.fs" />
     <Compile Include="src/Calculator.fs" />
     <Compile Include="src/Compiler.fs" />
     <Compile Include="src/Interpreter.fs" />
+    <Compile Include="src/BiGCL.fs" />
+    <Compile Include="src/RiscV.fs" />
     <Compile Include="src/SignAnalysis.fs" />
     <Compile Include="src/SecurityAnalysis.fs" />
     <Compile Include="src/Program.fs" />
