@@ -61,6 +61,8 @@ let main (args) =
               "Parser <INPUT>"
               "Compiler <INPUT>"
               "Interpreter <INPUT>"
+              "BiGCL <INPUT>"
+              "RiscV <INPUT>"
               "Sign <INPUT>"
               "Security <INPUT>" ]
 
