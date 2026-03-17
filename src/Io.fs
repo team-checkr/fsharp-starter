@@ -74,10 +74,10 @@ module RiscV =
   type Output =
     { assembly: string }
   type Annotation =
-    { pc: uint
+    { pc: uint32
       regs: Map<string, int32>
       variables: Map<string, int32 * int32>
-      memory: Map<int32, int32> }
+      memory: List<int32> }
 
 module SecurityAnalysis =
   type Input =
