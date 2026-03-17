@@ -10,7 +10,8 @@ This folder contains the skeleton of a parser along with the input and output ty
 - [Lexer.fsl](src/Lexer.fsl): The lexer for arithmetic expressions.
 - [Calculator.fs](src/Calculator.fs): Contains the code for the basic calculator.
 - [Compiler.fs](src/Compiler.fs): File for the compiler.
-- [Interpreter.fs](src/Interpreter.fs): File for the interpreter.
+- [BiGCL.fs](src/BiGCL.fs): File for the BiGCL transpiler.
+- [RiscV.fs](src/RiscV.fs): File for the GCL to RISC-V compiler.
 - [SignAnalysis.fs](src/SignAnalysis.fs): File for the sign analysis.
 - [Security.fs](src/Security.fs): File for the security analysis.
 - [Program.fs](src/Program.fs): The entry point for the program.

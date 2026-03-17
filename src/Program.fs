@@ -31,6 +31,18 @@ let main (args) =
         Console.WriteLine("{0}", JsonSerializer.Serialize output)
 
         0
+    | [ "BiGCL"; input ] ->
+        let input = JsonSerializer.Deserialize<Io.BiGCL.Input> input
+        let output: Io.BiGCL.Output = BiGCL.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
+
+        0
+    | [ "RiscV"; input ] ->
+        let input = JsonSerializer.Deserialize<Io.RiscV.Input> input
+        let output: Io.RiscV.Output = RiscV.analysis input
+        Console.WriteLine("{0}", JsonSerializer.Serialize output)
+
+        0
     | [ "Sign"; input ] ->
         let input = JsonSerializer.Deserialize<Io.SignAnalysis.Input> input
         let output: Io.SignAnalysis.Output = SignAnalysis.analysis input

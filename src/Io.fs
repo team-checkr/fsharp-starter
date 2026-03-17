@@ -2,6 +2,12 @@ module rec Io
 
 open System.Text.Json.Serialization
 
+module BiGCL =
+  type Input =
+    { commands: string }
+  type Output =
+    { binary: string }
+
 module Calculator =
   type Input =
     { expression: string }
@@ -62,6 +68,17 @@ module Parser =
   type Output =
     { pretty: string }
 
+module RiscV =
+  type Input =
+    { commands: string }
+  type Output =
+    { assembly: string }
+  type Annotation =
+    { pc: uint
+      regs: Map<string, int32>
+      variables: Map<string, int32 * int32>
+      memory: Map<int32, int32> }
+
 module SecurityAnalysis =
   type Input =
     { commands: string
@@ -105,10 +122,12 @@ module SignAnalysis =
 module ce_shell =
   [<JsonFSharpConverter(BaseUnionEncoding = JsonUnionEncoding.UnwrapSingleFieldCases, UnionTagName = "analysis", UnionFieldsName = "io")>]
   type Envs =
-    | Calculator of input: Calculator.Input * output: Calculator.Output * meta: unit
-    | Parser of input: Parser.Input * output: Parser.Output * meta: unit
-    | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit
-    | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef>
-    | Security of input: SecurityAnalysis.Input * output: SecurityAnalysis.Output * meta: SecurityAnalysis.Meta
-    | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef>
+    | Calculator of input: Calculator.Input * output: Calculator.Output * meta: unit * annotation: unit
+    | Parser of input: Parser.Input * output: Parser.Output * meta: unit * annotation: unit
+    | Compiler of input: Compiler.Input * output: Compiler.Output * meta: unit * annotation: unit
+    | Interpreter of input: Interpreter.Input * output: Interpreter.Output * meta: List<GCL.TargetDef> * annotation: unit
+    | BiGCL of input: BiGCL.Input * output: BiGCL.Output * meta: unit * annotation: unit
+    | RiscV of input: RiscV.Input * output: RiscV.Output * meta: unit * annotation: RiscV.Annotation
+    | Security of input: SecurityAnalysis.Input * output: SecurityAnalysis.Output * meta: SecurityAnalysis.Meta * annotation: unit
+    | Sign of input: SignAnalysis.Input * output: SignAnalysis.Output * meta: List<GCL.TargetDef> * annotation: unit
 
